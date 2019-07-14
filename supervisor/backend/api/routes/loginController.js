@@ -83,6 +83,7 @@ loginRouter.post("/register", (req, res, next) => {
     // Check if user already exists
     User.find({ email: userInfo.email }, function(err, users) {
       if (err) {
+        console.log(err);
         return res.status(500).send({
           success: false,
           message: "Error: Server Error"
@@ -99,7 +100,7 @@ loginRouter.post("/register", (req, res, next) => {
           if (err) res.json(err);
           return res.status(200).json({
             message: "New user created!",
-            data: user
+            data: newUser
           });
         });
       }

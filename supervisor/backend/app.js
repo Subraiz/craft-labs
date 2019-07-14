@@ -6,12 +6,13 @@ const bodyParser = require("body-parser");
 const websiteRouter = require("./api/routes/websiteController");
 const userRouter = require("./api/routes/userController");
 const loginRouter = require("./api/routes/loginController");
+require("dotenv").config();
 
 // Set up express server
 const app = express();
 
 // Set up default app settings for mongodb and handlebars
-app.use(cors());
+//app.use(cors());
 app.use(
   bodyParser.urlencoded({
     extended: true
@@ -35,7 +36,7 @@ app.set("view engine", "handlebars");
 
 // Connect to mongodb
 mongoose.connect(
-  "mongodb://localhost/admin",
+  `mongodb://admin:password@${process.env.HOST}:27017/${process.env.DB}`,
   { useNewUrlParser: true }
 );
 var db = mongoose.connection;
