@@ -1,11 +1,12 @@
 const app = require("./app");
-
-const port = process.env.PORT || 3000;
+const chalk = require("chalk");
+const port = process.env.PORT;
 
 app.listen(port, function() {
+  const test = String();
   console.log(
-    "Express server listening on port %d in %s mode",
-    this.address().port,
-    app.settings.env
+    "Express server listening on port %s in %s Mode.",
+    chalk.bold.italic.magenta(port),
+    chalk.bold.underline.red(process.env.ENV.toUpperCase())
   );
 });

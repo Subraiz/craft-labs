@@ -24,8 +24,9 @@ module.exports.dbConfig = db => {
     { useNewUrlParser: true }
   );
   var db = mongoose.connection;
-  if (!db) console.log(`Error connecting ${process.env.DB} database`);
-  else console.log(`Connected to ${process.env.DB} database`);
+  if (!db)
+    console.log(`Error connecting ${process.env.DB.toUpperCase()} database.`);
+  else console.log(`Connected to ${process.env.DB.toUpperCase()} database.`);
 };
 
 // Set up application routes
