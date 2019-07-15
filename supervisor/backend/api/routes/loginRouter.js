@@ -1,17 +1,25 @@
 const express = require("express");
 const jwt = require("jsonwebtoken");
+const checkAuth = require("../middleware/checkAuth");
 const User = require("../../models/userModel");
 const UserSession = require("../../models/userSessionModel");
 const loginRouter = express.Router();
 require("dotenv").config();
 
 // Initial login page
-loginRouter.get("/", (req, res, next) => {
-  res.render("login", { layouts: false });
+loginRouter.get("/", (req, res) => {
+  // Check if cookie exists, if it doesn't redirect to login page - otherwise load user website
+  try {
+    const token = req.cookies.token;
+    const decoded = jwt.verify(token, process.env.JWT_KEY);
+    return res.redirect("/website");
+  } catch (e) {
+    return res.render("login", { layouts: false });
+  }
 });
 
 // Handle authentication and redirect user to their CMS
-loginRouter.post("/", (req, res, next) => {
+loginRouter.post("/", (req, res) => {
   let { email, password } = parseJSON(req.body);
 
   // Locate the user in the database by searching with email
@@ -46,6 +54,7 @@ loginRouter.post("/", (req, res, next) => {
               { userID: user._id, sessionID: userSession._id },
               process.env.JWT_KEY
             );
+
             return res.send({
               success: true,
               message: "Success: User Authenticated",

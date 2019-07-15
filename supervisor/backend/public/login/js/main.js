@@ -76,6 +76,8 @@
   }
 })(jQuery);
 
+/********* Check for cookie, if cookie exists try to authenticate user ************/
+
 // Handle login submit form
 $(".login100-form-btn").click(e => {
   const email = $("input[name='username']").val();
@@ -83,10 +85,11 @@ $(".login100-form-btn").click(e => {
   if (email !== "" && password !== "") {
     e.preventDefault();
     $.ajax({
-      url: `http://0.0.0.0:3000/login`,
+      url: `/login`,
       data: { email, password },
       success: res => {
-        console.log(window.location);
+        Cookies.set("token", res.token);
+        window.location = window.location.origin + "/website";
       },
       error: err => {
         $(".error-message").css({ display: "block" });

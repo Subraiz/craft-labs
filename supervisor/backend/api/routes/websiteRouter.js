@@ -1,6 +1,9 @@
 const express = require("express");
+const checkAuth = require("../middleware/checkAuth");
 const Website = require("../../models/websiteModel");
 const websiteRouter = express.Router();
+
+websiteRouter.use(checkAuth);
 
 websiteRouter.get("/", (req, res) => {
   return res.render("home");
