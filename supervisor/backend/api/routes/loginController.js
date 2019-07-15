@@ -83,7 +83,6 @@ loginRouter.post("/register", (req, res, next) => {
     // Check if user already exists
     User.find({ email: userInfo.email }, function(err, users) {
       if (err) {
-        console.log(err);
         return res.status(500).send({
           success: false,
           message: "Error: Server Error"

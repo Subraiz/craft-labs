@@ -12,7 +12,7 @@ require("dotenv").config();
 const app = express();
 
 // Set up default app settings for mongodb and handlebars
-//app.use(cors());
+app.use(cors());
 app.use(
   bodyParser.urlencoded({
     extended: true
