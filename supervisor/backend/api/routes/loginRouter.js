@@ -14,7 +14,7 @@ loginRouter.get("/", (req, res) => {
     const decoded = jwt.verify(token, process.env.JWT_KEY);
     return res.redirect("/website");
   } catch (e) {
-    return res.render("login", { layouts: false });
+    return res.render("login", { layout: false });
   }
 });
 
@@ -65,16 +65,6 @@ loginRouter.post("/", (req, res) => {
       }
     }
   });
-
-  // Check if the password provided matches the users Password
-
-  // Redirect user to their CMS
-
-  // if (email.toLowerCase() === "admin" && password === "password") {
-  //   res.status(200).json({ res: req.body });
-  // } else {
-  //   res.status(400).send({ error: "authentication failed" });
-  // }
 });
 
 // Create user to store in database
