@@ -83,10 +83,10 @@ $(".login100-form-btn").click(e => {
   if (email !== "" && password !== "") {
     e.preventDefault();
     $.ajax({
-      url: "http://0.0.0.0:3000/login",
+      url: `http://0.0.0.0:3000/login`,
       data: { email, password },
       success: res => {
-        window.location = window.origin + "/website";
+        console.log(window.location);
       },
       error: err => {
         $(".error-message").css({ display: "block" });
