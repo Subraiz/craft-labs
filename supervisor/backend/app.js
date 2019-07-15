@@ -11,7 +11,6 @@ require("dotenv").config();
 
 // Set up express server
 const app = express();
-let test = "test";
 
 // Set up default app settings for mongodb and handlebars
 app.use(cors());
