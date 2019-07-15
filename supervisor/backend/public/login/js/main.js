@@ -86,7 +86,7 @@ $(".login100-form-btn").click(e => {
       url: "http://localhost:3000/login",
       data: { email, password },
       success: res => {
-        window.location = "http://localhost:3000/website";
+        window.location = window.origin + "/website";
       },
       error: err => {
         $(".error-message").css({ display: "block" });
