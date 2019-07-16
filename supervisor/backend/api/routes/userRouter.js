@@ -1,7 +1,6 @@
 const express = require("express");
 var cookieParser = require("cookie-parser");
-const checkAuth = require("../middleware/checkAuth");
-const checkWebsite = require("../middleware/checkWebsite");
+const { checkAuth, checkWebsite } = require("../middleware/");
 const Website = require("../../models/websiteModel");
 const userRouter = express.Router();
 
