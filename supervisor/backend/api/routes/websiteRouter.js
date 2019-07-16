@@ -9,7 +9,7 @@ websiteRouter.use(checkAuth);
 websiteRouter.get("/:website_id", (req, res) => {
   Website.findById(req.params.website_id, function(err, website) {
     if (err) {
-      return res.status(500).send({
+      return res.status(404).send({
         success: false,
         message: "Error: Website not found"
       });
