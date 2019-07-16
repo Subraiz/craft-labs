@@ -26,6 +26,23 @@ body {
   font-family: publicSansMedium;
 }
 
+button:focus {
+  outline: 0;
+}
+
+button:focus,
+input[type="button"]:focus {
+  outline: none;
+}
+
+input,
+textarea,
+button,
+select,
+a {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
 .dashboard-base-container {
   display: flex;
   flex-flow: row;

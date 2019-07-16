@@ -21,3 +21,116 @@
   max-height: 65px;
   padding: 5px 0;
 }
+
+.dashboard-panels-container {
+  margin-top: 25px;
+  display: grid;
+  grid-template-columns: 30.5% 30.5% 30.5%;
+  grid-column-gap: 4.25%;
+}
+
+.dashboard-panel {
+  display: flex;
+  flex-flow: column;
+  color: white;
+  border-radius: 6px;
+  filter: drop-shadow(2px 4px 8px rgba(0, 0, 0, 0.2));
+  position: relative;
+  overflow: hidden;
+  padding: 15px 0;
+  height: 25vh;
+}
+
+.dashboard-panel p:nth-child(1) {
+  font-size: 48px;
+  font-family: publicSansBold;
+  margin: 0;
+}
+
+.dashboard-panel p:nth-child(2) {
+  font-size: 29px;
+  font-family: publicSansExtraLight;
+  margin: 0;
+}
+
+.dashboard-panel .panel-info-container {
+  margin-left: 20px;
+  margin-top: 5px;
+}
+
+.dashboard-panel1 {
+  background: rgb(52, 158, 32);
+  background: linear-gradient(
+    124deg,
+    rgba(52, 158, 32, 1) 0%,
+    rgba(78, 183, 124, 1) 100%
+  );
+}
+
+.dashboard-panel2 {
+  background: rgb(12, 152, 208);
+  background: linear-gradient(
+    124deg,
+    rgba(12, 152, 208, 1) 0%,
+    rgba(101, 157, 179, 1) 100%
+  );
+}
+
+.dashboard-panel3 {
+  background: rgb(208, 99, 74);
+  background: linear-gradient(
+    124deg,
+    rgba(208, 99, 74, 1) 0%,
+    rgba(230, 144, 114, 1) 100%
+  );
+}
+
+.dashboard-panel button {
+  margin: 70px 0 15px 20px;
+  width: 175px;
+  background-color: white;
+  border-radius: 40px;
+  padding: 10px 0;
+  border: 0px solid;
+  font-family: publicSansBold;
+  font-size: 14px;
+  transition: 0.2s linear;
+  z-index: 2;
+  position: absolute;
+  bottom: 10px;
+}
+
+.dashboard-panel1 button {
+  transition: 0.1s linear;
+  color: #3f8d61;
+}
+
+.dashboard-panel2 button {
+  transition: 0.1s linear;
+  color: #40b1de;
+}
+
+.dashboard-panel3 button {
+  transition: 0.1s linear;
+  color: #d0634a;
+}
+
+.dashboard-panel button:hover {
+  cursor: pointer;
+  color: black;
+  transition: 0.2s linear;
+}
+
+.dashboard-panel button:active {
+  transition: 0.2s linear;
+  width: 170px;
+}
+
+.panel-icon {
+  max-height: 125px;
+  z-index: 0;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  transition: 0.2s linear;
+}

@@ -54,9 +54,9 @@
 }
 
 .sidebar-item .sidebar-line {
-  width: 2px;
+  width: 1px;
   background-color: white;
-  height: 50px;
+  height: 35px;
 }
 
 .sidebar-items {
@@ -69,7 +69,7 @@
 }
 
 .sidebar-item:not(.active) {
-  margin-left: 5px;
+  margin-left: 1px;
 }
 
 .sidebar-item:not(.active) .icon-container {
@@ -89,7 +89,7 @@
 
 .sidebar-item div i {
   color: #272728;
-  font-size: 16px;
+  font-size: 14px;
   margin-top: 1px;
 }
 
@@ -109,14 +109,14 @@
 }
 
 .sidebar-items .active i {
-  font-size: 46px;
+  font-size: 38px;
   padding: 8px 0;
 }
 
 .sidebar-items .active p {
-  font-size: 22px;
+  font-size: 20px;
   margin-left: 10px;
-  margin-top: 24px;
+  margin-top: 22px;
 }
 
 .sidebar-item:last-child .sidebar-line {

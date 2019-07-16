@@ -12,12 +12,7 @@ module.exports.appConfig = (app, directory) => {
   const hbs = exphbs.create({
     defaultLayout: "main",
     helpers: {
-      websiteType: function(arg1, arg2, options) {
-        console.log(options.fn(this));
-        if (arg1.toLowerCase() == arg2.toLowerCase()) {
-          return options.fn(this);
-        }
-      }
+      websiteType: websiteType
     }
   });
 
