@@ -1,0 +1,23 @@
+.dashboard-header-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.dashboard-business-title {
+  margin: 0;
+  padding: 0;
+  font-family: publicSansBold;
+  font-size: 2.8rem;
+}
+
+.dashboard-website-type {
+  color: #055676;
+  font-family: publicSansExtralight;
+  margin: 6px 0 0 2px;
+  font-size: 1rem;
+}
+
+.dashboard-business-logo {
+  max-height: 5rem;
+  padding: 5px 0;
+}

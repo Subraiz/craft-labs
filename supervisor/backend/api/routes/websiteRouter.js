@@ -6,7 +6,12 @@ const websiteRouter = express.Router();
 websiteRouter.use(checkAuth);
 
 websiteRouter.get("/", (req, res) => {
-  return res.render("home");
+  let webInfo = {
+    title: "Eagle's Deli CMS",
+    name: "Eagle's Deli",
+    type: "Restaraunt"
+  };
+  return res.render("dashboard", { ...webInfo, layout: "base" });
 });
 
 websiteRouter.get("/:website_id", (req, res) => {

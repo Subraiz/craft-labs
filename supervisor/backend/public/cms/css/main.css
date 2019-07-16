@@ -1,0 +1,35 @@
+@font-face {
+  font-family: publicSansBold;
+  src: url(../fonts/PublicSans-Bold.otf);
+}
+
+@font-face {
+  font-family: publicSansMedium;
+  src: url(../fonts/PublicSans-Medium.otf);
+}
+
+@font-face {
+  font-family: publicSanslight;
+  src: url(../fonts/PublicSans-Light.otf);
+}
+
+@font-face {
+  font-family: publicSansExtralight;
+  src: url(../fonts/PublicSans-ExtraLight.otf);
+}
+
+html,
+body {
+  margin: 0;
+  overflow: hidden;
+  font-family: publicSansMedium;
+}
+
+.dashboard-base-container {
+  display: flex;
+  flex-flow: row;
+}
+
+.sidebar-divider {
+  width: 17vw;
+}

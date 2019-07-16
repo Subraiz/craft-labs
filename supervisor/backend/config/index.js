@@ -8,6 +8,7 @@ const { loginRouter, websiteRouter, userRouter } = require("../api/routes");
 
 // App server settings
 module.exports.appConfig = (app, directory) => {
+  app.enable("view cache");
   app.use(cors());
   app.use(bodyParser.urlencoded({ extended: true }));
   app.use(bodyParser.json());
