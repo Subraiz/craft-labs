@@ -9,7 +9,8 @@ websiteRouter.get("/", (req, res) => {
   let webInfo = {
     title: "Eagle's Deli CMS",
     name: "Eagle's Deli",
-    type: "Restaraunt"
+    type: "Restaraunt",
+    logoSrc: ""
   };
   return res.render("dashboard", { ...webInfo, layout: "base" });
 });
