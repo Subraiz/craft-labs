@@ -1,24 +1,63 @@
 const mongoose = require("mongoose");
 
+/******** Following schemas are used to plug into website schema ********/
+let FeatureSchema = mongoose.Schema({
+  name: String,
+  enabled: {
+    type: Boolean,
+    default: false
+  }
+});
+
+let SectionSchmea = mongoose.Schema({
+  name: String,
+  content: {
+    type: Object,
+    default: {}
+  }
+});
+
+let PageSchema = mongoose.Schema({
+  name: String,
+  sections: [SectionSchmea]
+});
+
+let VisitorSchema = mongoose.Schema({
+  ip: String,
+  timeStamp: {
+    type: Date,
+    default: Date.now()
+  }
+});
+
+/* ******************************************************************** */
+
 // Set up schema for mongo database
 let WebsiteSchema = mongoose.Schema({
-  userID: {
-    type: Number,
+  title: {
+    type: String,
     required: true
   },
-  config: {
-    type: Object,
-    category: {
-      type: String
-    },
-    information: {
-      type: Object,
-      title: {
-        type: String,
-        required: true
-      }
-    }
-  }
+  logo: {
+    type: String,
+    required: true
+  },
+  type: {
+    type: String, // Check what type of website we are working with
+    required: true
+  },
+  dateCreated: {
+    type: Date,
+    default: Date.now()
+  },
+  features: [FeatureSchema],
+  pages: [PageSchema],
+  domain: String,
+  planType: {
+    type: String,
+    default: "Standard"
+  },
+  visitors: [VisitorSchema]
 });
 
 // Export Website model

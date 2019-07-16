@@ -1,40 +1,59 @@
 const express = require("express");
 const checkAuth = require("../middleware/checkAuth");
 const Website = require("../../models/websiteModel");
+const User = require("../../models/userModel");
 const websiteRouter = express.Router();
 
 websiteRouter.use(checkAuth);
 
-websiteRouter.get("/", (req, res) => {
-  let webInfo = {
-    title: "Eagle's Deli CMS",
-    name: "Eagle's Deli",
-    type: "Restaurant",
-    logoSrc: "",
-    email: "info@eaglesdeli.com"
-  };
-  return res.render("dashboard", { ...webInfo, layout: "base" });
-});
-
 websiteRouter.get("/:website_id", (req, res) => {
   Website.findById(req.params.website_id, function(err, website) {
-    if (err) res.send(err);
-    res.json({
-      message: "Website details loading...", // change to ...
-      data: website
-    });
+    if (err) {
+      return res.status(500).send({
+        success: false,
+        message: "Error: Website not found"
+      });
+    } else {
+      User.findById(req.params.website_id, function(err, user) {
+        let websiteConfiguration = {
+          title: website.title,
+          name: website.title,
+          type: website.type,
+          logo: website.logo,
+          email: user.email,
+          websiteID: req.params.website_id
+        };
+        return res.render("dashboard", {
+          ...websiteConfiguration,
+          layout: "base"
+        });
+      });
+    }
   });
 });
 
 websiteRouter.post("/", (req, res) => {
+  let {
+    userID,
+    type,
+    domain,
+    features,
+    pages,
+    planType,
+    logo,
+    title
+  } = parseJSON(req.body);
   let website = new Website();
-  website.userID = 4554234;
-  website.config = {
-    category: "test",
-    information: {
-      title: "subraiz dev"
-    }
-  };
+
+  website._id = userID;
+  website.domain = domain;
+  website.features = features;
+  website.logo = logo;
+  website.pages = pages;
+  website.planType = planType;
+  website.title = title;
+  website.type = type;
+  website.visitors = [{ ip: "127.0.0.1" }];
 
   // Save the website and check for errors
   website.save(function(err) {
@@ -45,5 +64,9 @@ websiteRouter.post("/", (req, res) => {
     });
   });
 });
+
+function parseJSON(object) {
+  return JSON.parse(JSON.stringify(object));
+}
 
 module.exports = websiteRouter;

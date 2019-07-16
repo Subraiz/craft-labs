@@ -3,6 +3,7 @@ const jwt = require("jsonwebtoken");
 const checkAuth = require("../middleware/checkAuth");
 const User = require("../../models/userModel");
 const UserSession = require("../../models/userSessionModel");
+const Website = require("../../models/websiteModel");
 const loginRouter = express.Router();
 require("dotenv").config();
 
@@ -10,9 +11,27 @@ require("dotenv").config();
 loginRouter.get("/", (req, res) => {
   // Check if cookie exists, if it doesn't redirect to login page - otherwise load user website
   try {
-    const token = req.cookies.token;
+    const token =
+      req.cookies.token === undefined
+        ? req.get("authorization").split(" ")[1]
+        : req.cookies.token;
     const decoded = jwt.verify(token, process.env.JWT_KEY);
-    return res.redirect("/website");
+    Website.find({ _id: decoded.userID }, function(err, websites) {
+      if (err) {
+        return res.status(500).send({
+          success: false,
+          message: "Error: Server Error"
+        });
+      } else if (websites.length < 1) {
+        res.clearCookie("jwt");
+        return res.status(401).json({
+          error: "No websites found for user"
+        });
+      } else {
+        let website = websites[0];
+        return res.redirect(`/website/${website._id}`);
+      }
+    });
   } catch (e) {
     return res.render("login", { layout: false });
   }
