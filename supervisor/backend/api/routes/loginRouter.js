@@ -22,11 +22,6 @@ loginRouter.get("/", (req, res) => {
           success: false,
           message: "Error: Server Error"
         });
-      } else if (websites.length < 1) {
-        res.clearCookie("jwt");
-        return res.status(401).json({
-          error: "No websites found for user"
-        });
       } else {
         let website = websites[0];
         return res.redirect(`/website/${website._id}`);

@@ -1,17 +1,18 @@
 const express = require("express");
 const checkAuth = require("../middleware/checkAuth");
+const checkWebsite = require("../middleware/checkWebsite");
 const Website = require("../../models/websiteModel");
 const User = require("../../models/userModel");
 const websiteRouter = express.Router();
 
 websiteRouter.use(checkAuth);
 
-websiteRouter.get("/:website_id", (req, res) => {
+websiteRouter.get("/:website_id", checkWebsite, (req, res) => {
   Website.findById(req.params.website_id, function(err, website) {
     if (err) {
       return res.status(404).send({
         success: false,
-        message: "Error: Website not found"
+        message: "Error: Server Error"
       });
     } else {
       User.findById(req.params.website_id, function(err, user) {
