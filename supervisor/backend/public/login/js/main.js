@@ -89,7 +89,7 @@ $(".login100-form-btn").click(e => {
       data: { email, password },
       success: res => {
         Cookies.set("token", res.token);
-        window.location = window.location.origin + "/website";
+        window.location = window.location.origin;
       },
       error: err => {
         $(".error-message").css({ display: "block" });
