@@ -9,7 +9,7 @@
 }
 
 @font-face {
-  font-family: publicSanslight;
+  font-family: publicSansLight;
   src: url(../fonts/PublicSans-Light.otf);
 }
 
@@ -29,8 +29,4 @@ body {
 .dashboard-base-container {
   display: flex;
   flex-flow: row;
-}
-
-.sidebar-divider {
-  width: 17vw;
 }

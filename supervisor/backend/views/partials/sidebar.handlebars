@@ -1,1 +1,92 @@
-<div class="sidebar-container"></div>
+<div class="sidebar-container">
+  <div class="sidebar-header-container">
+    <img src="cms/images/CompanyLogo.svg" alt="">
+    <p>Splurge</p>
+  </div>
+  <div class="sidebar-business-email">
+    <i class="fas fa-envelope"></i>
+    <p>{{email}}</p>
+  </div>
+
+{{#websiteType type "restaurant"}}
+
+  <div class="sidebar-items">
+    <div class="sidebar-item active">
+      <div class="line-container">
+        <div class="icon-container">
+          <i class="fas fa-tachometer-alt"></i>
+        </div>
+        <div class="sidebar-line"></div>
+      </div>
+      <p>Dashboard</p>
+    </div>
+
+
+
+    <div class="sidebar-item">
+      <div class="line-container">
+        <div class="icon-container">
+          <i class="fas fa-info-circle"></i>
+        </div>
+        <div class="sidebar-line"></div>
+      </div>
+      <p>Company Information</p>
+    </div>
+
+    <div class="sidebar-item">
+      <div class="line-container">
+        <div class="icon-container">
+          <i class="fas fa-file"></i>
+        </div>
+        <div class="sidebar-line"></div>
+      </div>
+      <p>Pages</p>
+    </div>
+
+    <div class="sidebar-item">
+      <div class="line-container">
+        <div class="icon-container">
+          <i class="fas fa-star"></i>
+        </div>
+        <div class="sidebar-line"></div>
+      </div>
+      <p>Features</p>
+    </div>
+
+
+
+    <div class="sidebar-item">
+      <div class="line-container">
+        <div class="icon-container">
+          <i class="fas fa-utensils"></i>
+        </div>
+        <div class="sidebar-line"></div>
+      </div>
+      <p>Orders</p>
+    </div>
+
+
+
+    <div class="sidebar-item">
+      <div class="line-container">
+        <div class="icon-container">
+          <i class="fas fa-cog"></i>
+        </div>
+        <div class="sidebar-line"></div>
+      </div>
+      <p>Account Settings</p>
+    </div>
+
+    <div class="sidebar-item">
+      <div class="line-container">
+        <div class="icon-container">
+          <i class="fas fa-question-circle"></i>
+        </div>
+        <div class="sidebar-line"></div>
+      </div>
+      <p>Support</p>
+    </div>
+  {{/websiteType}}
+
+  </div>
+</div>

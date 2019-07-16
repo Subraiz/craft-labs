@@ -5,15 +5,28 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 require("dotenv").config();
 const { loginRouter, websiteRouter, userRouter } = require("../api/routes");
+const { websiteType } = require("./helpers");
 
 // App server settings
 module.exports.appConfig = (app, directory) => {
+  const hbs = exphbs.create({
+    defaultLayout: "main",
+    helpers: {
+      websiteType: function(arg1, arg2, options) {
+        console.log(options.fn(this));
+        if (arg1.toLowerCase() == arg2.toLowerCase()) {
+          return options.fn(this);
+        }
+      }
+    }
+  });
+
   app.enable("view cache");
   app.use(cors());
   app.use(bodyParser.urlencoded({ extended: true }));
   app.use(bodyParser.json());
   app.use(directory); // Set directory to public so handlebars can access js/css directory
-  app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+  app.engine("handlebars", hbs.engine);
   app.set("view engine", "handlebars");
   return app;
 };
