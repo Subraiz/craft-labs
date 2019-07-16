@@ -34,6 +34,10 @@ let VisitorSchema = mongoose.Schema({
 
 // Set up schema for mongo database
 let WebsiteSchema = mongoose.Schema({
+  userID: {
+    type: String,
+    required: true
+  },
   title: {
     type: String,
     required: true

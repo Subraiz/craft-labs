@@ -1,0 +1,1 @@
+let handlebarsController = module.exports;
