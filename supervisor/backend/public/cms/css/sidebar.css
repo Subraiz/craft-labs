@@ -162,6 +162,12 @@
   color: white;
 }
 
+a:visited,
+a:link,
+a:active {
+  color: white;
+}
+
 .logout-container:hover {
   bottom: 32px;
   filter: drop-shadow(2px 4px 8px rgba(0, 0, 0, 0.2));
