@@ -10,28 +10,34 @@
     <p>{{email}}</p>
   </div>
 
-{{#websiteType type "restaurant"}}
+{{#ifEquals type "restaurant"}}
+
 
 
   <div class="sidebar-items">
-    <div class="sidebar-item active">
-      <div class="line-container">
-        <div class="icon-container">
-          <i class="fas fa-tachometer-alt"></i>
-        </div>
+    <div class="sidebar-item {{#if dashboard}} active {{/if}}">
+      <div class="line-container dashboard-item ">
+        <a href="">
+          <div class="icon-container">
+            <i class="fas fa-tachometer-alt"></i>
+          </div>
+        </a>
         <div class="sidebar-line"></div>
       </div>
-      <p>Dashboard</p>
+      <a href=""><p>Dashboard</p></a>
     </div>
 
 
 
-      <div class="sidebar-item">
 
-        <div class="line-container">
-          <div class="icon-container">
-            <a href="companyinfo"><i class="fas fa-info-circle"></i></a>
-          </div>
+
+
+
+      <div class="sidebar-item  {{#if companyInfo}} active {{/if}}">
+        <div class="line-container company-info-item">
+          <a href="companyinfo"><div class="icon-container">
+            <i class="fas fa-info-circle"></i>
+          </div></a>
           <div class="sidebar-line"></div>
         </div>
         <a href="companyinfo"><p>Company Information</p></a>
@@ -41,58 +47,68 @@
 
     <div class="sidebar-item">
       <div class="line-container">
-        <div class="icon-container">
-          <i class="fas fa-file"></i>
-        </div>
+        <a href="pages">
+          <div class="icon-container">
+            <i class="fas fa-file"></i>
+          </div>
+        </a>
         <div class="sidebar-line"></div>
       </div>
-      <p>Pages</p>
+      <a href="pages"><p>Pages</p></a>
     </div>
 
     <div class="sidebar-item">
       <div class="line-container">
+        <a href="features">
         <div class="icon-container">
           <i class="fas fa-star"></i>
         </div>
+        </a>
         <div class="sidebar-line"></div>
       </div>
-      <p>Features</p>
+      <a href="features"><p>Features</p></a>
     </div>
 
 
 
     <div class="sidebar-item">
       <div class="line-container">
-        <div class="icon-container">
-          <i class="fas fa-utensils"></i>
-        </div>
+        <a href="orders">
+          <div class="icon-container">
+            <i class="fas fa-utensils"></i>
+          </div>
+        </a>
         <div class="sidebar-line"></div>
       </div>
-      <p>Orders</p>
+      <a href="orders"><p>Orders</p></a>
     </div>
 
 
 
     <div class="sidebar-item">
       <div class="line-container">
-        <div class="icon-container">
-          <i class="fas fa-cog"></i>
-        </div>
+        <a href="settings">
+          <div class="icon-container">
+            <i class="fas fa-cog"></i>
+          </div>
+        </a>
         <div class="sidebar-line"></div>
       </div>
-      <p>Account Settings</p>
+      <a href="settings"><p>Account Settings</p></a>
     </div>
 
     <div class="sidebar-item">
       <div class="line-container">
-        <div class="icon-container">
-          <i class="fas fa-question-circle"></i>
-        </div>
+        <a href="support">
+          <div class="icon-container">
+            <i class="fas fa-question-circle"></i>
+          </div>
+        </a>
         <div class="sidebar-line"></div>
       </div>
-      <p>Support</p>
+      <a href="support"><p>Support</p></a>
     </div>
-  {{/websiteType}}
+  {{/ifEquals}}
 
   </div>
 </div>

@@ -29,27 +29,59 @@ websiteRouter.get("/:user_id/all", checkWebsite, (req, res) => {
 
 websiteRouter.get("/:website_id", (req, res) => {
   Website.findById(req.params.website_id, function(err, website) {
-    User.findById(website.userID, function(err, user) {
-      let websiteConfiguration = {
-        title: website.title,
-        name: website.title,
-        type: website.type,
-        logo: website.logo,
-        email: user.email,
-        websiteID: req.params.website_id,
-        userID: website.userID
-      };
-      return res.render("dashboard", {
-        ...websiteConfiguration,
-        layout: "base"
-      });
-    });
+    if (err) {
+      res.status(500).json({ error: "Server Error" });
+    } else {
+      if (err) {
+        res.status(500).json({ error: "Server Error" });
+      } else {
+        User.findById(website.userID, function(err, user) {
+          let websiteConfiguration = {
+            title: website.title,
+            name: website.title,
+            type: website.type,
+            logo: website.logo,
+            email: user.email,
+            websiteID: req.params.website_id,
+            userID: website.userID,
+            dashboard: true
+          };
+          return res.render("dashboard", {
+            ...websiteConfiguration,
+            layout: "base"
+          });
+        });
+      }
+    }
   });
 });
 
 websiteRouter.get("/:website_id/companyinfo", (req, res) => {
   Website.findById(req.params.website_id, function(err, website) {
-    return res.json(website);
+    if (err) {
+      res.status(500).json({ error: "Server Error" });
+    } else {
+      if (err) {
+        res.status(500).json({ error: "Server Error" });
+      } else {
+        User.findById(website.userID, function(err, user) {
+          let websiteConfiguration = {
+            title: website.title,
+            name: website.title,
+            type: website.type,
+            logo: website.logo,
+            email: user.email,
+            websiteID: req.params.website_id,
+            userID: website.userID,
+            companyInfo: true
+          };
+          return res.render("companyInformation", {
+            ...websiteConfiguration,
+            layout: "base"
+          });
+        });
+      }
+    }
   });
 });
 

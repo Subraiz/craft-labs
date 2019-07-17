@@ -5,14 +5,14 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 require("dotenv").config();
 const { loginRouter, websiteRouter, userRouter } = require("../api/routes");
-const { websiteType } = require("./helpers");
+const { ifEquals } = require("./helpers");
 
 // App server settings
 module.exports.appConfig = (app, directory) => {
   const hbs = exphbs.create({
     defaultLayout: "main",
     helpers: {
-      websiteType: websiteType
+      ifEquals: ifEquals
     }
   });
 

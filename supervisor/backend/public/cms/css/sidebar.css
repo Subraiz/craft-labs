@@ -56,16 +56,17 @@
 .sidebar-item .sidebar-line {
   width: 1px;
   background-color: white;
-  height: 35px;
+  height: 25px;
 }
 
 .sidebar-items {
-  margin: 10px 0 0 25px;
+  margin: 20px 0 0 25px;
 }
 
 .sidebar-item {
   display: flex;
   align-items: flex-start;
+  transition: 0.2s linear;
 }
 
 .sidebar-item:not(.active) {
@@ -74,7 +75,7 @@
 
 .sidebar-item:not(.active) .icon-container {
   background-color: #eff1f9;
-  padding: 7px;
+  padding: 6px;
   width: 16px;
   height: 16px;
   border-radius: 32px;
@@ -97,10 +98,12 @@
   color: #ffffff;
   font-family: publicSansExtraLight;
   margin-left: 10px;
+  transition: 0.2s linear;
 }
 
 .sidebar-items .active {
   margin-left: -5px;
+  transition: 0.2s linear;
 }
 
 .sidebar-items .active,
@@ -116,9 +119,23 @@
 .sidebar-items .active p {
   font-size: 20px;
   margin-left: 10px;
-  margin-top: 22px;
+  margin-top: 20px;
+  transition: 0.2s linear;
 }
 
 .sidebar-item:last-child .sidebar-line {
   display: none;
+}
+
+.sidebar-item a:visited {
+  color: white;
+}
+
+.sidebar-item:not(.active) p:hover {
+  margin-left: 20px;
+  transition: 0.2s linear;
+}
+
+.active .company-info-item i {
+  font-size: 41px !important;
 }
