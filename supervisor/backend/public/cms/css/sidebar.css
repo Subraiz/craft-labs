@@ -159,6 +159,10 @@
   transition: 0.15s linear;
 }
 
+a:active {
+  color: white;
+}
+
 .logout-container a:hover {
   margin-top: -5px;
   filter: drop-shadow(2px 4px 8px rgba(0, 0, 0, 0.2));
