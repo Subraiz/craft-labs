@@ -159,7 +159,9 @@
   transition: 0.15s linear;
 }
 
-a:link {
+.logout-container a:link {
+  color: white;
+  text-decoration: none;
   color: white;
 }
 
