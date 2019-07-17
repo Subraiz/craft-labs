@@ -66,7 +66,6 @@
 .sidebar-item {
   display: flex;
   align-items: flex-start;
-  transition: 0.2s linear;
 }
 
 .sidebar-item:not(.active) {
@@ -98,12 +97,10 @@
   color: #ffffff;
   font-family: publicSansExtraLight;
   margin-left: 10px;
-  transition: 0.2s linear;
 }
 
 .sidebar-items .active {
   margin-left: -5px;
-  transition: 0.2s linear;
 }
 
 .sidebar-items .active,
@@ -120,7 +117,6 @@
   font-size: 20px;
   margin-left: 10px;
   margin-top: 20px;
-  transition: 0.2s linear;
 }
 
 .sidebar-item:last-child .sidebar-line {
@@ -129,11 +125,6 @@
 
 .sidebar-item a:visited {
   color: white;
-}
-
-.sidebar-item:not(.active) p:hover {
-  margin-left: 20px;
-  transition: 0.2s linear;
 }
 
 .active .company-info-item i {
