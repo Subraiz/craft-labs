@@ -10,4 +10,9 @@ userRouter.get("/", checkAuth, checkWebsite, (req, res) => {
   return res.status(200).redirect(`/website/${req.userData.userID}/all`);
 });
 
+userRouter.get("/logout", (req, res) => {
+  res.clearCookie("token");
+  return res.redirect("/");
+});
+
 module.exports = userRouter;
