@@ -159,11 +159,7 @@
   transition: 0.15s linear;
 }
 
-a:active,
-a:visited,
-a::before,
-a::after,
-a:default {
+a:link {
   color: white;
 }
 
