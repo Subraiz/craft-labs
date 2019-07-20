@@ -21,7 +21,6 @@ window.onload = () => {
   phoneNumber.addEventListener("keydown", enforceFormat);
   phoneNumber.addEventListener("keyup", formatToPhone);
 };
-console.log("test");
 
 /*************** Helper Function to Format Phone Number ************************/
 function formatPhoneNumber(phoneNumberString) {
