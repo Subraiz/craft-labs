@@ -1,7 +1,7 @@
 const jwt = require("jsonwebtoken");
-const loginController = require("../controllers/loginController");
-const User = require("../../models/userModel");
-const Website = require("../../models/websiteModel");
+const loginController = require("../../controllers/cms/loginController");
+const User = require("../../../models/userModel");
+const Website = require("../../../models/websiteModel");
 const loginRouter = require("express").Router();
 
 // Initial login page
@@ -23,7 +23,7 @@ loginRouter.get("/", (req, res) => {
         });
       } else {
         let website = websites[0];
-        return res.redirect(`/website/${decoded.userID}/all`);
+        return res.redirect(`/cms/${decoded.userID}/all`);
       }
     });
   } catch (e) {

@@ -4,7 +4,8 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 require("dotenv").config();
-const { loginRouter, websiteRouter, userRouter } = require("../api/routes");
+const { websiteRouter } = require("../api/routes/client");
+const { loginRouter, cmsRouter, userRouter } = require("../api/routes/cms");
 const { ifEquals } = require("./helpers");
 
 // App server settings
@@ -40,7 +41,11 @@ module.exports.dbConfig = db => {
 
 // Set up application routes
 module.exports.routesConfig = app => {
+  // Routes for the Client Management System
   app.use("/", userRouter);
   app.use("/login", loginRouter);
+  app.use("/cms", cmsRouter);
+
+  // Routes for our front end and gatsby site generation
   app.use("/website", websiteRouter);
 };

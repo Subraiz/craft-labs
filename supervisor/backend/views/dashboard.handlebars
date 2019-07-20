@@ -1,15 +1,16 @@
 <div class="dashboard-header-container">
   <div class="dashboard-header">
-    <h1 class="dashboard-business-title">{{name}}</h1>
+    <h1 class="dashboard-business-title">{{title}}</h1>
     <p class="dashboard-website-type">{{type}}</p>
   </div>
   <img class="dashboard-business-logo" src={{logo}} alt="">
 </div>
 <hr>
 
-{{#ifEquals type "restaurant"}}
+
 
 <div class="dashboard-panels-container">
+  {{#ifEquals type "restaurant"}}
   <div class="dashboard-panel1 dashboard-panel">
     <div class="panel-info-container">
       <p>83</p>
@@ -18,6 +19,7 @@
     <button type="button" name="button">View Orders</button>
     <img class="panel-icon" src="../../cms/images/PanelOrdersIcon.png" alt="">
   </div>
+  {{/ifEquals}}
   <div class="dashboard-panel2 dashboard-panel">
     <div class="panel-info-container">
       <p>132</p>
@@ -35,5 +37,3 @@
     <img class="panel-icon" src="../../cms/images/PanelCustomizeIcon.png" alt="">
   </div>
 </div>
-
-{{/ifEquals}}

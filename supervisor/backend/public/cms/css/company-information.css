@@ -1,0 +1,83 @@
+.company-info-first-container {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  grid-column-gap: 1rem;
+  padding: 10px 25px;
+  overflow: hidden;
+}
+
+.edit-company-info-icon {
+  color: #4ba070;
+  font-size: 24px;
+}
+
+.pencil-icon {
+  font-size: 22px;
+  color: #9f9d9e;
+  transition: 0.3s linear;
+}
+
+input:focus {
+  outline: none;
+}
+
+.edit-company-container {
+  width: 70%;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 0.5px solid grey;
+  padding-bottom: 5px;
+  transition: 0.3s linear;
+}
+
+.edit-value-container {
+  width: 90%;
+  background-color: rgba(0, 0, 0, 0);
+  border: 0px solid black;
+  font-family: publicSansExtraLight;
+  color: #808080;
+  transition: 0.5s linear;
+}
+
+input.middle:focus {
+  outline-width: 0;
+}
+
+.company-info-item-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: publicSansMedium;
+}
+
+.company-info-data-container {
+  display: grid;
+  grid-auto-rows: 60px;
+  padding-top: 8px;
+  border-radius: 10px;
+  border: 1px solid #979797;
+}
+
+.company-info-title-container {
+  padding: 0 25px;
+  border-bottom: 1px solid #979797;
+}
+
+.company-info-description-container {
+  padding: 0px 25px;
+  border-bottom: 1px solid #979797;
+}
+
+.company-info-contact-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.company-info-phone-container {
+  border-right: 1px solid #979797;
+  padding: 0px 25px;
+}
+
+.company-info-email-container {
+  padding: 0px 25px;
+}

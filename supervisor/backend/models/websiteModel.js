@@ -43,8 +43,7 @@ let WebsiteSchema = mongoose.Schema({
     required: true
   },
   logo: {
-    type: String,
-    required: true
+    type: String
   },
   type: {
     type: String, // Check what type of website we are working with
@@ -61,7 +60,18 @@ let WebsiteSchema = mongoose.Schema({
     type: String,
     default: "Standard"
   },
-  visitors: [VisitorSchema]
+  visitors: [VisitorSchema],
+  companyInformation: {
+    title: String,
+    description: String,
+    hoursOfOperation: {
+      type: [],
+      required: false,
+      default: []
+    },
+    email: String,
+    phone: String
+  }
 });
 
 // Export Website model

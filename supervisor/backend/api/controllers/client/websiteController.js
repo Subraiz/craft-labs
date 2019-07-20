@@ -1,4 +1,17 @@
-const Website = require("../../models/websiteModel");
+// Handle all logic for basic website routing and generation
+const Website = require("../../../models/websiteModel");
+const stringify = require("json-stringify-safe");
+
+// Fetch website by ID
+module.exports.getWebsiteByID = (req, res, websiteID) => {
+  Website.findById(websiteID, function(err, website) {
+    if (err) {
+      return res.status(500).json({ error: "Website Not Found" });
+    } else {
+      return res.status(200).json(website);
+    }
+  });
+};
 
 // Create new website from incoming post request
 module.exports.createWebsite = (req, res, websiteInformation) => {
@@ -13,6 +26,7 @@ module.exports.createWebsite = (req, res, websiteInformation) => {
   website.title = websiteInformation.title;
   website.type = websiteInformation.type;
   website.visitors = [{ ip: "127.0.0.1" }];
+  website.companyInformation = websiteInformation.companyInformation;
 
   // Save the website and check for errors
   website.save(function(err) {

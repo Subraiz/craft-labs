@@ -1,5 +1,7 @@
-const User = require("../../models/userModel");
-const UserSession = require("../../models/userSessionModel");
+// Handle all logic for login and authentication of User
+
+const User = require("../../../models/userModel");
+const UserSession = require("../../../models/userSessionModel");
 const jwt = require("jsonwebtoken");
 
 // Helper function to authenticate user
