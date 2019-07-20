@@ -2,6 +2,8 @@ const express = require("express");
 const path = require("path");
 let app = express();
 
+console.log("test");
+
 // Set up default app settings - and set public directory
 app = require("./config").appConfig(
   app,
