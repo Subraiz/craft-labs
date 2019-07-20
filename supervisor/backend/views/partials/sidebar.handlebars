@@ -10,7 +10,7 @@
     <p>{{email}}</p>
   </div>
 
-{{#ifEquals type "restaurant"}}
+
 
 
 
@@ -62,7 +62,7 @@
     </div>
 
 
-
+    {{#ifEquals type "restaurant"}}
     <div class="sidebar-item">
       <div class="line-container">
         <a href="orders">
@@ -75,7 +75,7 @@
       <a href="orders"><p>Orders</p></a>
     </div>
 
-
+  {{/ifEquals}}
 
     <div class="sidebar-item">
       <div class="line-container">
@@ -100,7 +100,7 @@
       </div>
       <a href="support"><p>Support</p></a>
     </div>
-  {{/ifEquals}}
+
 
 
   </div>

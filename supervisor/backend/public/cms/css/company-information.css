@@ -6,9 +6,39 @@
   overflow: hidden;
 }
 
+.confirm-company-input-change {
+  background-color: rgba(0, 0, 0, 0);
+  border: 0px solid black;
+  opacity: 0;
+  display: none;
+  transition: 0.3s linear;
+}
+
+.cancel-company-input-change {
+  background-color: rgba(0, 0, 0, 0);
+  border: 0px solid black;
+  opacity: 0;
+  display: none;
+  transition: 0.3s linear;
+}
+
+.confirm-icon {
+  color: #4ba070;
+  font-size: 22px;
+}
+
+.cancel-icon {
+  color: #c54b4b;
+  font-size: 22px;
+}
+
 .edit-company-info-icon {
   color: #4ba070;
   font-size: 24px;
+}
+
+a:hover {
+  cursor: pointer;
 }
 
 .not-visible {

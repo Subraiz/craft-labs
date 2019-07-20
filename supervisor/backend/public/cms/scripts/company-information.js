@@ -3,16 +3,50 @@ window.onload = () => {
   let inputContainers = document.getElementsByClassName("edit-value-container");
   for (var i = 0; i < inputContainers.length; i++) {
     let container = inputContainers[i];
+    let tempInputValue;
     container.addEventListener("focus", () => {
+      tempInputValue = container.value;
       container.parentNode.style.borderBottom = ".5px solid #4BA070";
       container.style.color = "black";
-      container.nextElementSibling.style.color = "grey";
+      container.nextElementSibling.nextElementSibling.nextElementSibling.style.color =
+        "grey";
+
+      // Fade in buttons
+      container.nextElementSibling.style.display = "block";
+      container.nextElementSibling.nextElementSibling.style.display = "block";
+      setTimeout(() => {
+        container.nextElementSibling.style.opacity = "1";
+        container.nextElementSibling.style.marginRight = "5px";
+        container.nextElementSibling.nextElementSibling.style.marginRight =
+          "25px";
+        container.nextElementSibling.nextElementSibling.style.opacity = "1";
+      }, 200);
     });
-    // Save current input value to database
+
     container.addEventListener("focusout", () => {
       container.parentNode.style.borderBottom = ".5px solid grey";
       container.style.color = "#808080";
-      container.nextElementSibling.style.color = "#9f9d9e";
+      container.nextElementSibling.nextElementSibling.nextElementSibling.style.color =
+        "#9f9d9e";
+
+      // Fade out buttons
+      container.nextElementSibling.style.opacity = "0";
+      container.nextElementSibling.style.marginRight = "0";
+      container.nextElementSibling.nextElementSibling.style.marginRight = "0";
+      container.nextElementSibling.nextElementSibling.style.opacity = "0";
+      setTimeout(() => {
+        container.nextElementSibling.style.display = "none";
+        container.nextElementSibling.nextElementSibling.style.display = "none";
+      }, 250);
+    });
+
+    let cancelButton = container.nextElementSibling;
+    cancelButton.addEventListener("click", () => {
+      container.value = tempInputValue;
+    });
+    // Save current input value to database
+    let confirmButton = container.nextElementSibling.nextElementSibling;
+    confirmButton.addEventListener("click", () => {
       let refrenceProperty = container.classList[1].split("-")[1];
       axios.patch("", {
         prop: `companyInformation.${refrenceProperty}.value`,
