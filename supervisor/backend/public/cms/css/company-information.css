@@ -11,6 +11,10 @@
   font-size: 24px;
 }
 
+.not-visible {
+  color: #b3b3b3;
+}
+
 .pencil-icon {
   font-size: 22px;
   color: #9f9d9e;

@@ -9,12 +9,17 @@ let FeatureSchema = mongoose.Schema({
   }
 });
 
-let SectionSchmea = mongoose.Schema({
-  name: String,
-  content: {
-    type: Object,
-    default: {}
+let ContentSchema = mongoose.Schema({
+  data: {},
+  isVisible: {
+    type: Boolean,
+    default: true
   }
+});
+
+let SectionSchmea = mongoose.Schema({
+  type: String,
+  content: [ContentSchema]
 });
 
 let PageSchema = mongoose.Schema({
@@ -28,6 +33,12 @@ let VisitorSchema = mongoose.Schema({
     type: Date,
     default: Date.now()
   }
+});
+
+let OperationHoursSchema = mongoose.Schema({
+  day: String,
+  open: String,
+  close: String
 });
 
 /* ******************************************************************** */
@@ -62,15 +73,41 @@ let WebsiteSchema = mongoose.Schema({
   },
   visitors: [VisitorSchema],
   companyInformation: {
-    title: String,
-    description: String,
-    hoursOfOperation: {
-      type: [],
-      required: false,
-      default: []
+    title: {
+      value: String,
+      isVisible: {
+        type: Boolean,
+        default: true
+      }
     },
-    email: String,
-    phone: String
+    description: {
+      value: String,
+      isVisible: {
+        type: Boolean,
+        default: true
+      }
+    },
+    email: {
+      value: String,
+      isVisible: {
+        type: Boolean,
+        default: true
+      }
+    },
+    phone: {
+      value: String,
+      isVisible: {
+        type: Boolean,
+        default: true
+      }
+    },
+    hoursOfOperation: {
+      value: [OperationHoursSchema],
+      isVisible: {
+        type: Boolean,
+        default: true
+      }
+    }
   }
 });
 

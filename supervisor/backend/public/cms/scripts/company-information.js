@@ -8,10 +8,16 @@ window.onload = () => {
       container.style.color = "black";
       container.nextElementSibling.style.color = "grey";
     });
+    // Save current input value to database
     container.addEventListener("focusout", () => {
       container.parentNode.style.borderBottom = ".5px solid grey";
       container.style.color = "#808080";
       container.nextElementSibling.style.color = "#9f9d9e";
+      let refrenceProperty = container.classList[1].split("-")[1];
+      axios.patch("", {
+        prop: `companyInformation.${refrenceProperty}.value`,
+        value: container.value
+      });
     });
   }
 
@@ -20,7 +26,41 @@ window.onload = () => {
   phoneNumber.value = formatPhoneNumber(phoneNumber.value);
   phoneNumber.addEventListener("keydown", enforceFormat);
   phoneNumber.addEventListener("keyup", formatToPhone);
+
+  // Handle visibility icons
+  let visibilityIcons = document.getElementsByClassName(
+    "edit-company-info-icon"
+  );
+  for (var i = 0; i < visibilityIcons.length; i++) {
+    let icon = visibilityIcons[i];
+    icon.addEventListener("click", toggleVisibility);
+  }
 };
+
+/*************** Helper function to handle updates to database ****************/
+function toggleVisibility(event) {
+  let icon = event.srcElement;
+  let refrenceProperty = icon.parentNode.previousElementSibling
+    .querySelector(".edit-value-container")
+    .classList[1].split("-")[1];
+  if (icon.classList.contains("not-visible")) {
+    icon.classList.remove("not-visible");
+    icon.classList.remove("fa-eye-slash");
+    icon.classList.add("fa-eye");
+    axios.patch("", {
+      prop: `companyInformation.${refrenceProperty}.isVisible`,
+      value: true
+    });
+  } else {
+    icon.classList.add("not-visible");
+    icon.classList.add("fa-eye-slash");
+    icon.classList.remove("fa-eye");
+    axios.patch("", {
+      prop: `companyInformation.${refrenceProperty}.isVisible`,
+      value: false
+    });
+  }
+}
 
 /*************** Helper Function to Format Phone Number ************************/
 function formatPhoneNumber(phoneNumberString) {

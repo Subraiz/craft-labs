@@ -18,6 +18,10 @@ cmsRouter.get("/:website_id/companyinfo", (req, res) => {
   cmsController.renderCompanyInformation(req, res);
 });
 
+cmsRouter.patch("/:website_id", checkAuth, (req, res) => {
+  cmsController.updateWebsiteProperty(req, res, req.params.website_id);
+});
+
 function parseJSON(object) {
   return JSON.parse(JSON.stringify(object));
 }

@@ -77,3 +77,36 @@ module.exports.renderCompanyInformation = (req, res) => {
     }
   });
 };
+
+// Update website property
+module.exports.updateWebsiteProperty = (req, res, websiteID) => {
+  Website.findOne({ _id: websiteID }, function(err, website) {
+    if (err) {
+      return res.status(500);
+    } else if (!website) {
+      return re.status(400).json({ error: "Website Not Found" });
+    } else {
+      set(req.body.prop, req.body.value, website);
+      website.save(function(err, updatedWebsite) {
+        if (err) {
+          return res.status(500).send({ err: err });
+        } else {
+          return res.status(200).send();
+        }
+      });
+    }
+  });
+};
+
+function set(path, value, obj) {
+  var schema = obj; // a moving reference to internal objects within obj
+  var pList = path.split(".");
+  var len = pList.length;
+  for (var i = 0; i < len - 1; i++) {
+    var elem = pList[i];
+    if (!schema[elem]) schema[elem] = {};
+    schema = schema[elem];
+  }
+
+  schema[pList[len - 1]] = value;
+}

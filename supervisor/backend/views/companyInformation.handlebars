@@ -1,39 +1,39 @@
-
+<script type="text/javascript" src="../../cms/scripts/company-information.js"></script>
 
 <div class="company-info-first-container">
   <div class="company-info-data-container">
     <div class="company-info-title-container company-info-item-container">
       <p>Company Name</p>
       <div class="edit-company-title-container edit-company-container">
-          <input type="text" class="edit-value-container company-title-input" placeholder="Company Name" name="" value="{{companyInformation.title}}" spellcheck="false">
+          <input type="text" class="edit-value-container company-title-input" placeholder="Company Name" name="" value="{{companyInformation.title.value}}" spellcheck="false">
           <i class="fas fa-edit pencil-icon"></i>
       </div>
-      <a href="#" class="company-info-title edit-company-info"><i class="fas fa-eye edit-company-info-icon"></i></a>
+      <a class="company-info-title edit-company-info"><i class="fas {{#if companyInformation.title.isVisible}}fa-eye {{else}}fa-eye-slash not-visible{{/if}} edit-company-info-icon"></i></a>
     </div>
     <div class="company-info-description-container company-info-item-container">
       <p>Description</p>
       <div class="edit-company-title-container edit-company-container">
-          <input type="text" class="edit-value-container company-description-input" placeholder="Company Name" name="" value="{{companyInformation.description}}" spellcheck="false">
+          <input type="text" class="edit-value-container company-description-input" placeholder="Company Name" name="" value="{{companyInformation.description.value}}" spellcheck="false">
           <i class="fas fa-edit pencil-icon"></i>
       </div>
-      <a href="#" class="company-info-title edit-company-info"><i class="fas fa-eye edit-company-info-icon"></i></a>
+      <a class="company-info-title edit-company-info"><i class="fas {{#if companyInformation.description.isVisible}}fa-eye {{else}}fa-eye-slash not-visible{{/if}} edit-company-info-icon"></i></a>
     </div>
     <div class="company-info-contact-container">
       <div class="company-info-phone-container company-info-item-container">
         <p>Phone</p>
         <div class="edit-company-title-container edit-company-container">
-            <input type="text" class="edit-value-container company-phone-input" placeholder="Company Name" name="" value="{{companyInformation.phone}}" spellcheck="false">
+            <input type="text" class="edit-value-container company-phone-input" placeholder="Company Name" name="" value="{{companyInformation.phone.value}}" spellcheck="false">
             <i class="fas fa-edit pencil-icon"></i>
         </div>
-        <a href="#" class="company-info-title edit-company-info"><i class="fas fa-eye edit-company-info-icon"></i></a>
+        <a class="company-info-title edit-company-info"><i class="fas {{#if companyInformation.phone.isVisible}}fa-eye {{else}}fa-eye-slash not-visible{{/if}} edit-company-info-icon"></i></a>
       </div>
       <div class="company-info-email-container company-info-item-container">
         <p>Email</p>
         <div class="edit-company-title-container edit-company-container">
-            <input type="text" class="edit-value-container company-email-input" placeholder="Company Name" name="" value="{{companyInformation.email}}" spellcheck="false">
+            <input type="text" class="edit-value-container company-email-input" placeholder="Company Name" name="" value="{{companyInformation.email.value}}" spellcheck="false">
             <i class="fas fa-edit pencil-icon"></i>
         </div>
-        <a href="#" class="company-info-title edit-company-info"><i class="fas fa-eye edit-company-info-icon"></i></a>
+        <a class="company-info-title edit-company-info"><i class="fas {{#if companyInformation.email.isVisible}}fa-eye {{else}}fa-eye-slash not-visible{{/if}} edit-company-info-icon"></i></a>
       </div>
     </div>
   </div>
