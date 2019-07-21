@@ -2,15 +2,85 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
+    <link rel="stylesheet" href="../../cms/css/website-manager.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
     <title></title>
   </head>
   <body>
-    <div class="">
-      <h1>You have a lot of websites!</h1>
-      {{#each websites}}
-        <a href="/cms/{{this._id}}"> <h1>{{this.title}}</h1></a>
-        <p>{{this._id}}</p>
-      {{/each}}
-    </div>
+    <div class="website-manager-outer-container">
+      <div class="manager-container">
+        <div class="manager-header-container">
+          <div class="search-bar-container">
+            <i class="fab fa-searchengin search-icon"></i>
+            <input type="text" class="website-input" name="" placeholder="Search by website name..." value="">
+          </div>
+          <div class="profile-container">
+            <div class="notification-container">
+              <i class="fas fa-bell notification-icon"></i>
+              <div class="notification-circle">
+
+              </div>
+            </div>
+            <div class="user-container">
+              <i class="far fa-user-circle user-icon"></i>
+              <p class="user-name">{{user.firstName}} {{user.lastName}}</p>
+              <i class="fas fa-chevron-down dropdown-icon"></i>
+            </div>
+          </div>
+        </div>
+        <div class="message-container">
+          <div class="welcome-container">
+            <div class="text">
+              <p class='text-1'>Welcome back to your website manager, {{user.firstName}} {{user.lastName}}!</p>
+              <p class='text-2'>Here you can see all of your websites and add new ones.</p>
+            </div>
+            <div class="image">
+              <img src="../../cms/images/welcomeContainer.png" alt="">
+            </div>
+          </div>
+          <div class="welcome-vector">
+            <img src="../../cms/images/computerGraphic.png" alt="">
+          </div>
+        </div>
+        <div class="websites-container">
+          {{#each websites}}
+            <a href="/cms/{{_id}}" class="website-card" data-websiteID={{_id}}>
+              <div class="card-bar"></div>
+              <div class="settings-container"></div>
+              <div class="content-container">
+                <div class="website-info">
+                  <p>{{title}}</p>
+                  <p>{{type}}</p>
+                  <p>{{companyInformation.description.value}}</p>
+                  <div class="default-container">
+                    <i class="fas fa-star star-icon"></i>
+                    <p>Default Site</p>
+                  </div>
+                  <div class="type-icon-container">
+                    <img src="../../cms/images/restaurantIcon.png" alt="">
+                  </div>
+                </div>
+                <hr>
+                <div class="manager-footer-container">
+                  <div class="status-container">
+                    <div class="status-indicator"></div>
+                    <p>Live</p>
+                  </div>
+                  <div class="manager-disable-button">
+                    <button type="button" name="button">Disable</button>
+                  </div>
+                </div>
+            </div>
+          </a>
+          {{/each}}
+          <div class="add-new-website">
+            <p>+</p>
+            <p>Add New Site</p>
+          </div>
+        </div>
+
+      </div>
+  </div>
   </body>
+  <script type="text/javascript" src="../../cms/scripts/website-manager.js"></script>
 </html>

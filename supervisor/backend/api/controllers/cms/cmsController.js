@@ -14,12 +14,23 @@ module.exports.renderWebsiteManger = (req, res) => {
       });
     } else {
       // If user has more than one site redirect to select website page
-      if (websites.length > 1) {
-        return res.render("websiteManager", { layout: false, websites });
-      } else {
-        // Otherwise go to CMS dashboard for website
-        res.redirect(`/cms/${websites[0]._id}`);
-      }
+      // if (websites.length > 1) {
+      //   return res.render("websiteManager", { layout: false, websites });
+      // } else {
+      //   // Otherwise go to CMS dashboard for website
+      //   res.redirect(`/cms/${websites[0]._id}`);
+      // }
+      User.findById(websites[0].userID, function(err, user) {
+        if (err) {
+          return res.status(500).send({ error: "Server Error" });
+        } else {
+          return res.render("websiteManager", {
+            layout: false,
+            websites,
+            user
+          });
+        }
+      });
     }
   });
 };
