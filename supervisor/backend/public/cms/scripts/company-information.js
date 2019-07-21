@@ -4,6 +4,7 @@ window.onload = () => {
   for (var i = 0; i < inputContainers.length; i++) {
     let container = inputContainers[i];
     let tempInputValue;
+    let newInputValue;
     container.addEventListener("focus", () => {
       tempInputValue = container.value;
       container.parentNode.style.borderBottom = ".5px solid #4BA070";
@@ -24,6 +25,8 @@ window.onload = () => {
     });
 
     container.addEventListener("focusout", () => {
+      newInputValue = container.value;
+      container.value = tempInputValue;
       container.parentNode.style.borderBottom = ".5px solid grey";
       container.style.color = "#808080";
       container.nextElementSibling.nextElementSibling.nextElementSibling.style.color =
@@ -50,8 +53,9 @@ window.onload = () => {
       let refrenceProperty = container.classList[1].split("-")[1];
       axios.patch("", {
         prop: `companyInformation.${refrenceProperty}.value`,
-        value: container.value
+        value: newInputValue
       });
+      container.value = newInputValue;
     });
   }
 

@@ -31,7 +31,7 @@
   height: 35px;
   border-radius: 6px;
   font-size: 14px;
-  border: 0px solid black;
+  border: 1px solid #2d3145;
   transition: 0.15s linear;
 }
 
