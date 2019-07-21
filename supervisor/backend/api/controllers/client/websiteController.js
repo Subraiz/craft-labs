@@ -14,7 +14,6 @@ module.exports.getWebsiteByID = (req, res, websiteID) => {
     }
   });
 };
-console.log("test");
 
 // Create new website from incoming post request
 module.exports.createWebsite = (req, res, websiteInformation) => {
