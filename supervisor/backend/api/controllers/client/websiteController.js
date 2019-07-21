@@ -6,8 +6,10 @@ const stringify = require("json-stringify-safe");
 module.exports.getWebsiteByID = (req, res, websiteID) => {
   Website.findById(websiteID, function(err, website) {
     if (err) {
+      console.log(err);
       return res.status(500).json({ error: "Website Not Found" });
     } else {
+      console.log(website);
       return res.status(200).json(website);
     }
   });
