@@ -1,7 +1,6 @@
 import React from "react"
 
 export default ({ pageContext: { website } }) => {
-  console.log(website)
   return (
     <div>
       <h1>{website.companyInformation.title.value}</h1>
