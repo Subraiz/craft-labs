@@ -110,7 +110,7 @@ module.exports.publishWebsite = (req, res, websiteID) => {
     // Use ./develop for Development and ./build for building
     shell.cd("../../website-generator");
     shell.exec(
-      `./build ${req.params.website_id} ${process.env.BUILD_PATH} ${
+      `./build-script ${req.params.website_id} ${process.env.BUILD_PATH} ${
         website.title
       }`,
       {
