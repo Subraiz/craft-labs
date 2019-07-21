@@ -26,6 +26,12 @@
               <p class="user-name">{{user.firstName}} {{user.lastName}}</p>
               <i class="fas fa-chevron-down dropdown-icon"></i>
             </div>
+            <div class="dropdown-menu">
+              <ul>
+                <li><a>Account Settings</a></li>
+                <li><a>Help</a></li>
+              </ul>
+            </div>
           </div>
         </div>
         <div class="message-container">
@@ -64,7 +70,7 @@
                 <div class="manager-footer-container">
                   <div class="status-container">
                     <div class="manager-status-indicator"></div>
-                    <p>Live</p>
+                    <p>{{status}}</p>
                   </div>
                   <div class="manager-disable-button">
                     <button type="button" name="button">Disable</button>
@@ -74,7 +80,7 @@
           </a>
           {{/each}}
           <div class="add-new-website">
-            <p>+</p>
+            <p>+</p>&nbsp;&nbsp;
             <p>Add New Site</p>
           </div>
         </div>

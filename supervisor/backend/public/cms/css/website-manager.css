@@ -58,12 +58,17 @@ body {
   background-color: #7748f6;
   display: flex;
   justify-content: space-between;
+  position: relative;
 }
 
 .search-bar-container,
 .profile-container {
   display: flex;
   align-items: center;
+}
+
+.profile-container:hover {
+  cursor: pointer;
 }
 
 .search-bar-container {
@@ -77,6 +82,7 @@ body {
   padding-right: 15px;
   padding-top: 10px;
   padding-bottom: 10px;
+  transition: 0.175s linear;
 }
 
 .website-input {
@@ -132,6 +138,47 @@ body {
 .dropdown-icon {
   color: white;
   font-size: 18px;
+  transition: 0.2s linear;
+}
+
+.dropdown-icon:hover {
+  cursor: pointer;
+}
+
+.dropdown-menu {
+  position: absolute;
+  right: 0;
+  background-color: #7748f6;
+  top: 70px;
+  right: 40px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  height: 0px;
+  transition: height 0.5s ease-in-out;
+  z-index: 3;
+}
+
+.dropdown-menu ul,
+.dropdown-menu ul li {
+  display: block;
+}
+
+.dropdown-menu ul li {
+  text-align: right;
+  padding: 4px 20px;
+  transition: 0.2s linear;
+}
+
+.dropdown-menu ul li:hover {
+  cursor: pointer;
+}
+
+.dropdown-menu ul li a {
+  color: white;
+  font-family: publicSansLight;
+  opacity: 0;
+  transition: 0.15s linear;
+  display: none;
 }
 
 .user-name {
@@ -214,6 +261,10 @@ body {
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.045);
   width: 25%;
   margin-right: 25px;
+  transition: 0.4s linear;
+  opacity: 0;
+  left: 100px;
+  top: 25px;
 }
 
 .website-card:hover {
@@ -321,6 +372,8 @@ body {
   display: flex;
   align-items: center;
   margin-left: 25px;
+  opacity: 0;
+  transition: 0.4s linear;
 }
 
 .add-new-website:hover {
