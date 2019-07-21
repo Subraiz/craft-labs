@@ -108,6 +108,10 @@ let WebsiteSchema = mongoose.Schema({
         default: true
       }
     }
+  },
+  status: {
+    type: String,
+    default: "Live"
   }
 });
 

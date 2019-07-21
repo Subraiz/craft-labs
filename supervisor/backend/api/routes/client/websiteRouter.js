@@ -7,6 +7,10 @@ websiteRouter.get("/:website_id", (req, res) => {
   websiteController.getWebsiteByID(req, res, websiteID);
 });
 
+websiteRouter.get("/status/:website_id", (req, res) => {
+  websiteController.getWebsiteStatus(req, res, req.params.website_id);
+});
+
 websiteRouter.post("/", (req, res) => {
   let websiteInformation = parseJSON(req.body);
   websiteController.createWebsite(req, res, websiteInformation);

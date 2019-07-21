@@ -2,12 +2,12 @@
 
 const express = require("express");
 var cookieParser = require("cookie-parser");
-const { checkAuth, checkWebsite } = require("../../middleware/");
+const { checkAuth, checkUserWebsites } = require("../../middleware/");
 const userRouter = express.Router();
 
 userRouter.use(cookieParser());
 
-userRouter.get("/", checkAuth, checkWebsite, (req, res) => {
+userRouter.get("/", checkAuth, checkUserWebsites, (req, res) => {
   return res.status(200).redirect(`/cms/${req.userData.userID}/all`);
 });
 

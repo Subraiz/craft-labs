@@ -2,7 +2,7 @@
 let handlebarsController = module.exports;
 const Website = require("../../../models/websiteModel");
 const User = require("../../../models/userModel");
-const { execSync } = require("child_process");
+const shell = require("shelljs");
 
 // Render website manager
 module.exports.renderWebsiteManger = (req, res) => {
@@ -97,6 +97,36 @@ module.exports.updateWebsiteProperty = (req, res, websiteID) => {
       });
     }
   });
+};
+
+module.exports.publishWebsite = (req, res, websiteID) => {
+  // Set website status to building to update front end UI
+  Website.findById(websiteID, function(err, website) {
+    website.status = "Building";
+    set("status", "Building", website);
+    website.save();
+  });
+
+  // Execute bash script located in the site generator to build or develop the Site
+  // Use ./develop for Development and ./build for building
+  shell.cd("../../website-generator");
+  shell.exec(
+    `./build ${req.params.website_id}`,
+    {
+      async: true,
+      silent: false
+    },
+    () => {
+      // Once website is built set the status back to live
+      Website.findById(websiteID, function(err, website) {
+        website.status = "Building";
+        set("status", "Live", website);
+        website.save();
+      });
+    }
+  );
+
+  return res.status(200).send({ test: "making new directory" });
 };
 
 function set(path, value, obj) {

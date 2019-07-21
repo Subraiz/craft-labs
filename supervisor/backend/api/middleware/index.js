@@ -1,2 +1,3 @@
 module.exports.checkAuth = require("./checkAuth");
-module.exports.checkWebsite = require("./checkWebsite");
+module.exports.checkUserWebsites = require("./checkUserWebsites");
+module.exports.checkWebsiteExists = require("./checkWebsiteExists");

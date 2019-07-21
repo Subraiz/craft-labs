@@ -1,0 +1,41 @@
+<div class="publish-website-loading-container">
+  <div class="lds-hourglass"></div>
+</div>
+
+<div class="header-container">
+  <button type="button" name="button" class="publish-button" data-id={{_id}}>Publish Site</button>
+  <div class="header-status-container" >
+    <p class="status-indicator">•</p>
+    <p class="status-title">Status: </p>
+    <p class="status">Live</p>
+  </div>
+</div>
+
+<hr>
+
+<script type="text/javascript">
+  let publishButton = document.querySelector(".publish-button");
+  let loader = document.querySelector(".publish-website-loading-container");
+  let websiteID = publishButton.getAttribute('data-id');
+  publishButton.addEventListener("click", () => {
+
+    loader.style.display = "block";
+    setTimeout(() => {
+      loader.style.opacity = 1;
+    }, 150)
+    axios.post(`/cms/publish/${websiteID}`)
+  })
+
+  // Temperoary way to check for site stuatus, should not be used in production
+  // Use sockets instead
+  setInterval(() => {
+    axios.get(`/website/status/${websiteID}`).then(res => {
+      if(res.data.toLowerCase() === "live"){
+        loader.style.opacity = 0;
+        setTimeout(() => {
+          loader.style.display = "none";
+        }, 150)
+      }
+    })
+  }, 1000)
+</script>

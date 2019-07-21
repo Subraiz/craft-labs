@@ -27,6 +27,7 @@ module.exports.createWebsite = (req, res, websiteInformation) => {
   website.type = websiteInformation.type;
   website.visitors = [{ ip: "127.0.0.1" }];
   website.companyInformation = websiteInformation.companyInformation;
+  website.status = websiteInformation.status;
 
   // Save the website and check for errors
   website.save(function(err) {
@@ -35,6 +36,18 @@ module.exports.createWebsite = (req, res, websiteInformation) => {
       message: "New website created!",
       data: website
     });
+  });
+};
+
+module.exports.getWebsiteStatus = (req, res, websiteID) => {
+  Website.findById(websiteID, function(err, website) {
+    if (err) {
+      return res.status(500).send({ error: "Server Error" });
+    } else if (!website) {
+      return res.status(404).send({ error: "Website doesn't exist!" });
+    } else {
+      return res.status(200).send(website.status);
+    }
   });
 };
 
