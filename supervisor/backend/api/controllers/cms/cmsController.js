@@ -126,7 +126,6 @@ module.exports.publishWebsite = (req, res, websiteID) => {
       }
     );
   });
-  console.log("test");
   return res.status(200).send({ test: "making new directory" });
 };
 

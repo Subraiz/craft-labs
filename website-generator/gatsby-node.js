@@ -1,7 +1,16 @@
-/**
- * Implement Gatsby's Node APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/node-apis/
- */
+const axios = require("axios")
 
-// You can delete this file if you're not using it
+let websiteID = process.env.website
+const WEBSITE_API = `http://127.0.0.1:3000/website/${websiteID}`
+console.log("hey")
+
+exports.createPages = async ({ actions: { createPage } }) => {
+  let response = await axios.get(WEBSITE_API).catch(err => console.log(err))
+  const website = response.data
+
+  createPage({
+    path: `/`,
+    component: require.resolve("./src/templates/website.js"),
+    context: { website },
+  })
+}
