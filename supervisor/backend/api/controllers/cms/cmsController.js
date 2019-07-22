@@ -146,7 +146,10 @@ module.exports.publishWebsite = (req, res, websiteID) => {
         silent: false
       },
       () => {
+        // This part should only be done on testing or production server not locally
+        // Configure the .conf file for apache
         if (process.env.ENV != "Development") {
+          shell.cd("/var/www");
           shell.exec(
             `sudo ./server-configure -u ${websiteMinifiedTitle} -d builds/${websiteMinifiedTitle}`
           );
