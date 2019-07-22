@@ -8,6 +8,7 @@
   margin: 0;
   padding: 0;
   overflow: hidden;
+  box-shadow: 4px 2px 18px 12px rgba(0, 0, 0, 0.05);
 }
 
 .sidebar-header-container {
@@ -21,7 +22,7 @@
 }
 
 .sidebar-header-container img {
-  width: 100px;
+  width: 75%;
 }
 
 .sidebar-header-container p {
@@ -30,10 +31,10 @@
 
 .sidebar-business-email {
   display: flex;
-  color: #a9a9a9;
+  color: white;
   align-items: center;
   padding: 15px 15px;
-  background-color: #f7f7f7;
+  background-color: #7748f6;
   margin-top: 10px;
   font-family: publicSansLight;
 }
@@ -55,7 +56,7 @@
 
 .sidebar-item .sidebar-line {
   width: 1px;
-  background-color: #55123f;
+  background-color: #7748f6;
   height: 25px;
 }
 
@@ -73,7 +74,7 @@
 }
 
 .sidebar-item:not(.active) .icon-container {
-  background-color: #ffd521;
+  background-color: #7748f6;
   padding: 6px;
   width: 16px;
   height: 16px;
@@ -94,7 +95,7 @@
 }
 
 .sidebar-item:not(.active) p {
-  color: #7748f6;
+  color: black;
   font-family: publicSansExtraLight;
   margin-left: 10px;
 }
@@ -105,7 +106,7 @@
 
 .sidebar-items .active,
 .sidebar-items .active i {
-  color: #4f2f44;
+  color: black;
 }
 
 .sidebar-items .active i {
@@ -117,7 +118,7 @@
   font-size: 20px;
   margin-left: 10px;
   margin-top: 20px;
-  color: #55123f;
+  color: black;
 }
 
 .sidebar-item:last-child .sidebar-line {
@@ -164,4 +165,54 @@ a:active {
   bottom: 32px;
   filter: drop-shadow(2px 4px 8px rgba(0, 0, 0, 0.2));
   transition: 0.15s linear;
+}
+
+.logout-icon {
+  display: none;
+}
+
+@media (max-width: 414px) {
+  .sidebar-item a p {
+    display: none;
+  }
+
+  .sidebar-items {
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .sidebar-items .active {
+    margin: 0;
+  }
+
+  .sidebar-business-email {
+    display: none;
+  }
+
+  .sidebar-header-container img {
+    display: none;
+  }
+
+  .sidebar-header-container {
+    background-image: url("../images/AppLogo.svg");
+    height: 100px;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+
+  .logout-container a:not(.logout-icon) {
+    display: none;
+  }
+
+  .logout-icon {
+    display: block;
+  }
 }

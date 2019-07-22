@@ -35,6 +35,7 @@ loginRouter.get("/", (req, res) => {
 // Handle authentication and redirect user to their CMS
 loginRouter.post("/", (req, res) => {
   let { email, password } = parseJSON(req.body);
+  email = email.toLowerCase();
 
   // Locate the user in the database by searching with email
   User.find({ email: email }, function(err, users) {

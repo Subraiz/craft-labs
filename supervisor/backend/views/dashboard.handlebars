@@ -1,3 +1,8 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.css">
+<link rel="stylesheet" href="../../cms/css/segmentedControl.css">
+<div class="dashboard-container">
+
+
 <div class="dashboard-header-container">
   <div class="dashboard-header">
     <h1 class="dashboard-business-title">{{title}}</h1>
@@ -9,9 +14,19 @@
 
 
 
+
 <div class="dashboard-panels-container">
-  {{#ifEquals type "restaurant"}}
+
   <div class="dashboard-panel1 dashboard-panel">
+    <div class="panel-info-container">
+      <p>Customize</p>
+      <p>Your Site</p>
+    </div>
+    <button type="button" name="button">Edit Now</button>
+    <img class="panel-icon" src="../../cms/images/PanelCustomizeIcon.png" alt="">
+  </div>
+  {{#ifEquals type "restaurant"}}
+  <div class="dashboard-panel2 dashboard-panel">
     <div class="panel-info-container">
       <p>83</p>
       <p>Orders Placed Today</p>
@@ -20,7 +35,7 @@
     <img class="panel-icon" src="../../cms/images/PanelOrdersIcon.png" alt="">
   </div>
   {{/ifEquals}}
-  <div class="dashboard-panel2 dashboard-panel">
+  <div class="dashboard-panel3 dashboard-panel">
     <div class="panel-info-container">
       <p>132</p>
       <p>Daily Visitors</p>
@@ -28,12 +43,23 @@
     <button type="button" name="button">Engage</button>
     <img class="panel-icon" src="../../cms/images/PanelVisitorsIcon.png" alt="">
   </div>
-  <div class="dashboard-panel3 dashboard-panel">
-    <div class="panel-info-container">
-      <p>Customize</p>
-      <p>Your Site</p>
-    </div>
-    <button type="button" name="button">Edit Now</button>
-    <img class="panel-icon" src="../../cms/images/PanelCustomizeIcon.png" alt="">
-  </div>
+
 </div>
+
+<div class="chart-container">
+  <div class="segemented-control-tab">
+    <div class="control-tab-container">
+      <div class="active-tab"></div>
+      <p id="visitors-tab" class="control-tab selected-control-tab">Visitors</p>
+      <p id="orders-tab" class="control-tab">Orders</p>
+      <p id="revenue-tab" class="control-tab">Revenue</p>
+    </div>
+  </div>
+
+  <canvas id="myChart" ></canvas>
+</div>
+
+</div>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+<script type="text/javascript" src="../../cms/scripts/dashboard.js"></script>

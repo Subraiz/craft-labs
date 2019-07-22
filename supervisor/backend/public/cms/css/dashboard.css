@@ -1,3 +1,15 @@
+.dashboard-container {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-flow: column;
+}
+
+hr {
+  margin-left: 0;
+  margin-right: 0;
+}
+
 .dashboard-header-container {
   display: flex;
   justify-content: space-between;
@@ -34,24 +46,40 @@
   flex-flow: column;
   color: white;
   border-radius: 6px;
-  filter: drop-shadow(2px 4px 8px rgba(0, 0, 0, 0.2));
+  box-shadow: 6px 12px 14px rgba(0, 0, 0, 0.1);
+  border: 0.5px solid rgba(135, 135, 135, 0.15);
   position: relative;
   overflow: hidden;
   padding: 15px 0;
   height: 25vh;
+  background-color: white;
+  border-radius: 30px;
+}
+
+.dashboard-panel1 {
+  background-color: #5613ba;
+}
+
+.dashboard-panel2 {
+  background-color: #7748f6;
+}
+
+.dashboard-panel3 {
+  background-color: #c8b4ff;
 }
 
 .dashboard-panel p:nth-child(1) {
   font-size: 48px;
   font-family: publicSansBold;
   margin: 0;
+  color: white;
 }
 
 .dashboard-panel p:nth-child(2) {
   font-size: 29px;
   font-family: publicSansExtraLight;
   margin: 0;
-  margin-left: 10px;
+  color: white;
 }
 
 .dashboard-panel .panel-info-container {
@@ -59,37 +87,11 @@
   margin-top: 5px;
 }
 
-.dashboard-panel1 {
-  background: rgb(52, 158, 32);
-  background: linear-gradient(
-    124deg,
-    rgba(52, 158, 32, 1) 0%,
-    rgba(78, 183, 124, 1) 100%
-  );
-}
-
-.dashboard-panel2 {
-  background: rgb(12, 152, 208);
-  background: linear-gradient(
-    124deg,
-    rgba(12, 152, 208, 1) 0%,
-    rgba(101, 157, 179, 1) 100%
-  );
-}
-
-.dashboard-panel3 {
-  background: rgb(208, 99, 74);
-  background: linear-gradient(
-    124deg,
-    rgba(208, 99, 74, 1) 0%,
-    rgba(230, 144, 114, 1) 100%
-  );
-}
-
 .dashboard-panel button {
   margin: 70px 0 15px 20px;
   width: 175px;
-  background-color: white;
+  background-color: #ffe67c;
+  color: #5539a3;
   border-radius: 40px;
   padding: 10px 0;
   border: 0px solid;
@@ -101,24 +103,10 @@
   bottom: 10px;
 }
 
-.dashboard-panel1 button {
-  transition: 0.1s linear;
-  color: #3f8d61;
-}
-
-.dashboard-panel2 button {
-  transition: 0.1s linear;
-  color: #40b1de;
-}
-
-.dashboard-panel3 button {
-  transition: 0.1s linear;
-  color: #d0634a;
-}
-
 .dashboard-panel button:hover {
   cursor: pointer;
   color: black;
+  background-color: #ffd521;
   transition: 0.2s linear;
 }
 
@@ -134,4 +122,155 @@
   bottom: 0;
   right: 0;
   transition: 0.2s linear;
+}
+
+.chart-container {
+  padding: 25px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  flex-grow: 1;
+  display: flex;
+  position: relative;
+}
+
+#myChart {
+  width: 95%;
+  align-self: flex-end;
+  padding-bottom: 15px;
+}
+
+/* Control Tab Styling */
+.segemented-control-tab {
+  position: absolute;
+  top: 40px;
+}
+
+.control-tab-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  width: 375px;
+  background-color: white;
+  border-radius: 8px;
+  position: relative;
+  padding: 0 8px;
+  border: 0.5px solid rgba(0, 0, 0, 0.08);
+}
+
+.active-tab {
+  position: absolute;
+  width: 33%;
+  background-color: #7748f6;
+  height: 80%;
+  align-self: center;
+  margin: 0 2%;
+  left: 0;
+  z-index: 1;
+  border-radius: 6px;
+  transition: 0.2s linear;
+}
+
+.control-tab {
+  text-align: center;
+  z-index: 2;
+  font-family: publicSansExtraLight;
+  transition: 0.2s linear;
+}
+
+.control-tab:hover {
+  cursor: pointer;
+}
+
+.control-tab:not(.selected-control-tab):hover {
+  color: #7748f6;
+}
+
+.selected-control-tab {
+  color: white;
+}
+
+@media (max-width: 414px) {
+  .dashboard-panels-container {
+    grid-template-columns: 100%;
+    grid-row-gap: 1.5%;
+  }
+
+  .dashboard-header-container {
+    margin-top: 10px;
+  }
+
+  .dashboard-header {
+    width: 100%;
+  }
+
+  .dashboard-header h1 {
+    font-size: 23px;
+  }
+
+  .dashboard-header p {
+    font-size: 12px;
+  }
+
+  .dashboard-business-logo {
+    max-height: 40px;
+  }
+
+  .dashboard-panel {
+    height: 18vh;
+  }
+
+  .dashboard-panel p:nth-child(1) {
+    font-size: 32px;
+  }
+
+  .dashboard-panel p:nth-child(2) {
+    font-size: 18px;
+  }
+
+  .dashboard-panel button {
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+  }
+
+  .panel-icon {
+    max-height: 75px;
+  }
+
+  .chart-container {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    padding: 25px 0;
+    position: static;
+    width: 100%;
+  }
+
+  .segemented-control-tab {
+    position: relative;
+    width: 100%;
+  }
+
+  .control-tab-container {
+    width: 100%;
+    padding: 0;
+    left: 0;
+  }
+
+  #myChart {
+    margin-top: 85px;
+    padding-bottom: 50px;
+    width: 100%;
+  }
+
+  .control-tab {
+    font-size: 14px;
+  }
 }

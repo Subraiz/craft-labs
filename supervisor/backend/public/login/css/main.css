@@ -342,7 +342,7 @@ iframe {
   -moz-transition: all 0.6s;
   transition: all 0.6s;
 
-  background: #57b846;
+  background: #7748f6;
 }
 
 /*---------------------------------------------*/
@@ -432,7 +432,7 @@ input.input100 {
   padding: 0 20px;
   min-width: 160px;
   height: 50px;
-  background-color: #57b846;
+  background-color: #7748f6;
   border-radius: 25px;
 
   font-family: Poppins-Regular;
@@ -534,9 +534,35 @@ input.input100 {
   opacity: 1;
 }
 
+.login-logo {
+  width: 100px;
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  top: 4vh;
+}
+
 @media (max-width: 992px) {
   .alert-validate::before {
     visibility: visible;
     opacity: 1;
+  }
+}
+
+@media (max-width: 414px) {
+  .login-logo {
+    top: 4vh;
+  }
+
+  .login100-form-title {
+    background-size: contain;
+    height: 0;
+    padding: 40px;
+  }
+
+  .login100-form-title-1 {
+    line-height: 0;
   }
 }

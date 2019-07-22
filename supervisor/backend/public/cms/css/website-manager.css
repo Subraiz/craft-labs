@@ -391,3 +391,81 @@ body {
   color: #4f2f44;
   font-size: 22px;
 }
+
+@media (max-width: 414px) {
+  .message-container {
+    flex-flow: column;
+    padding: 10px 0;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .welcome-container {
+    margin: 0;
+    padding: 0;
+    width: 92%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .text {
+    width: 100%;
+    margin: 0;
+    padding: 10px 15px;
+  }
+
+  .text-1,
+  .text-2 {
+    width: 100%;
+  }
+
+  .text-1 {
+    font-size: 22px;
+  }
+
+  .text-2 {
+    font-size: 14px;
+  }
+
+  .welcome-vector {
+    display: none;
+  }
+
+  .websites-container {
+    flex-flow: column;
+    padding: 10px 15px;
+  }
+
+  .website-card {
+    width: 100%;
+    margin-bottom: 25px;
+  }
+
+  .welcome-container .image {
+    display: none;
+  }
+
+  .add-new-website {
+    margin: 0;
+    justify-content: center;
+  }
+
+  .search-bar-container {
+    display: none;
+  }
+
+  .profile-container {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .manager-header-container {
+    padding: 10px 15px;
+  }
+
+  .user-container .user-icon {
+    display: none;
+  }
+}
