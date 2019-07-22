@@ -199,6 +199,7 @@ hr {
 
   .dashboard-header-container {
     margin-top: 10px;
+    margin-bottom: 25px;
   }
 
   .dashboard-header {
@@ -214,11 +215,20 @@ hr {
   }
 
   .dashboard-business-logo {
-    max-height: 40px;
+    height: 40px;
+  }
+
+  hr {
+    display: none;
+  }
+
+  .dashboard-panels-container {
+    margin-top: 50px;
   }
 
   .dashboard-panel {
     height: 18vh;
+    margin-bottom: 10px;
   }
 
   .dashboard-panel p:nth-child(1) {
@@ -244,12 +254,12 @@ hr {
   .chart-container {
     padding: 0;
     margin: 0;
+    margin-top: 200px;
     display: flex;
     flex-flow: column;
     align-items: center;
     justify-content: center;
     padding: 25px 0;
-    position: static;
     width: 100%;
   }
 
