@@ -25,6 +25,12 @@ a {
   border: 0px;
 }
 
+a {
+  outline: none;
+  border: 0px solid;
+  text-decoration: none;
+}
+
 html,
 body {
   margin: 0;

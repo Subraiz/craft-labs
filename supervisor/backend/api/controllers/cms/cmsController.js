@@ -135,8 +135,7 @@ module.exports.publishWebsite = (req, res, websiteID) => {
         ? `/Users/subraizahmed/documents/github/CraftLabs/website-generator`
         : `/var/www/CraftLabs/website-generator`;
     shell.cd(`${buildScriptPath}`);
-    shell.exec("sudo rm -R .cache");
-    shell.exec("    ");
+    shell.exec("gatsby clean");
     shell.exec(
       `${buildScript} ${req.params.website_id} ${
         process.env.BUILD_PATH
@@ -146,6 +145,12 @@ module.exports.publishWebsite = (req, res, websiteID) => {
         silent: false
       },
       () => {
+        // Once website is built set the status back to live
+        Website.findById(websiteID, function(err, website) {
+          set("status", "Live", website);
+          website.save();
+        });
+
         // This part should only be done on testing or production server not locally
         // Configure the .conf file for apache
         if (process.env.ENV != "Development") {
@@ -183,15 +188,10 @@ module.exports.publishWebsite = (req, res, websiteID) => {
               console.log(err.response);
             });
         }
-        // Once website is built set the status back to live
-        Website.findById(websiteID, function(err, website) {
-          set("status", "Live", website);
-          website.save();
-        });
       }
     );
   });
-  return res.status(200).send({ test: "making new directory" });
+  return res.status(200).send();
 };
 
 function set(path, value, obj) {
