@@ -8,40 +8,41 @@ class RestaurantNavbar1 extends Component {
     let { pages } = this.props
     this.state = {
       pages: pages,
+      renderReady: false,
     }
   }
 
+  componentDidMount() {
+    console.log("test")
+    this.setState({ renderReady: true })
+  }
+
   renderPages = () => {
-    return this.state.pages.map((page, index) => {
-      if (window.location.pathname === "/" && index === 0) {
-        return (
-          <Link
-            to={`/`}
-            className={[styles.navbarItem, styles.activeNavbarItem].join(" ")}
-            key={page.name}
-          >
-            <p>{capitalizeString(page.name)}</p>
-          </Link>
-        )
-      } else if (window.location.pathname === "/" + page.name) {
-        return (
-          <Link
-            to={`/${page.name}`}
-            className={[styles.navbarItem, styles.activeNavbarItem].join(" ")}
-            key={page.name}
-          >
-            <p>{capitalizeString(page.name)}</p>
-          </Link>
-        )
-      } else {
-        let link = this.state.pages[0].name == page.name ? `/` : `/${page.name}`
-        return (
-          <Link to={link} className={styles.navbarItem} key={page.name}>
-            <p>{capitalizeString(page.name)}</p>
-          </Link>
-        )
-      }
-    })
+    if (this.state.renderReady) {
+      return this.state.pages.map((page, index) => {
+        if (this.props.currentPage == page.name) {
+          let link =
+            this.state.pages[0].name == page.name ? "/" : `/${page.name}`
+          return (
+            <Link
+              to={link}
+              className={[styles.navbarItem, styles.activeNavbarItem].join(" ")}
+              key={page.name}
+            >
+              <p>{capitalizeString(page.name)}</p>
+            </Link>
+          )
+        } else {
+          let link =
+            this.state.pages[0].name == page.name ? "/" : `/${page.name}`
+          return (
+            <Link to={link} className={styles.navbarItem} key={page.name}>
+              <p>{capitalizeString(page.name)}</p>
+            </Link>
+          )
+        }
+      })
+    }
   }
 
   render() {
