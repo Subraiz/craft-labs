@@ -208,6 +208,10 @@ a:active {
     background-repeat: no-repeat;
   }
 
+  .logout-container {
+    bottom: 80px;
+  }
+
   .logout-container a:not(.logout-icon) {
     display: none;
   }
