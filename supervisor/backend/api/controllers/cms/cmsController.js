@@ -1,8 +1,8 @@
 // Handle all logic for routes and renders relating to the CMS
-let handlebarsController = module.exports;
+const shell = require("shelljs");
+const axios = require("axios");
 const Website = require("../../../models/websiteModel");
 const User = require("../../../models/userModel");
-const shell = require("shelljs");
 
 // Render website manager
 module.exports.renderWebsiteManger = (req, res) => {
@@ -20,6 +20,7 @@ module.exports.renderWebsiteManger = (req, res) => {
       //   // Otherwise go to CMS dashboard for website
       //   res.redirect(`/cms/${websites[0]._id}`);
       // }
+      axios;
       User.findById(websites[0].userID, function(err, user) {
         if (err) {
           return res.status(500).send({ error: "Server Error" });
@@ -119,9 +120,19 @@ module.exports.publishWebsite = (req, res, websiteID) => {
 
     // Execute bash script located in the site generator to build or develop the Site
     // Use ./develop for Development and ./build for building
-    shell.cd("../../website-generator");
+    let buildScript =
+      process.env.ENV == "Development"
+        ? `./build-local-script`
+        : `./build-script`;
+    let buildScriptPath =
+      process.env.ENV == "Development"
+        ? `/Users/subraizahmed/documents/github/CraftLabs/website-generator`
+        : `/var/www/CraftLabs/website-generator`;
+    shell.cd(`${buildScriptPath}`);
+    shell.exec("sudo rm -R .cache");
+    shell.exec("    ");
     shell.exec(
-      `./build-script ${req.params.website_id} ${
+      `${buildScript} ${req.params.website_id} ${
         process.env.BUILD_PATH
       } ${website.title
         .replace(/\s+/g, "")
@@ -130,9 +141,41 @@ module.exports.publishWebsite = (req, res, websiteID) => {
         .toLowerCase()}`,
       {
         async: true,
-        silent: true
+        silent: false
       },
       () => {
+        if (process.env.ENV != "Development") {
+          axios
+            .patch(
+              `https://api.godaddy.com/v1/domains/splurgedev.com/records`,
+              [
+                {
+                  type: "A",
+                  name: `${website.title
+                    .replace(/\s+/g, "")
+                    .replace(/[^A-Za-z0-9\s]/g, "")
+                    .replace(/\s{2,}/g, " ")
+                    .toLowerCase()}`,
+                  data: "34.236.22.80"
+                }
+              ],
+              {
+                headers: {
+                  Authorization: `sso-key ${process.env.GO_DADDY_API_KEY}:${
+                    process.env.GO_DADDY_SECRET
+                  }`,
+                  "Content-Type": "application/json",
+                  Accept: "application/json"
+                }
+              }
+            )
+            .then(res => {
+              console.log(res.data);
+            })
+            .catch(err => {
+              console.log(err.response);
+            });
+        }
         // Once website is built set the status back to live
         Website.findById(websiteID, function(err, website) {
           set("status", "Live", website);
