@@ -118,6 +118,12 @@ module.exports.publishWebsite = (req, res, websiteID) => {
     set("status", "Building", website);
     website.save();
 
+    let websiteMinifiedTitle = website.title
+      .replace(/\s+/g, "")
+      .replace(/[^A-Za-z0-9\s]/g, "")
+      .replace(/\s{2,}/g, " ")
+      .toLowerCase();
+
     // Execute bash script located in the site generator to build or develop the Site
     // Use ./develop for Development and ./build for building
     let buildScript =
@@ -134,28 +140,23 @@ module.exports.publishWebsite = (req, res, websiteID) => {
     shell.exec(
       `${buildScript} ${req.params.website_id} ${
         process.env.BUILD_PATH
-      } ${website.title
-        .replace(/\s+/g, "")
-        .replace(/[^A-Za-z0-9\s]/g, "")
-        .replace(/\s{2,}/g, " ")
-        .toLowerCase()}`,
+      } ${websiteMinifiedTitle}`,
       {
         async: true,
         silent: false
       },
       () => {
         if (process.env.ENV != "Development") {
+          shell.exec(
+            `sudo ./server-configure -u ${websiteMinifiedTitle} -d builds/${websiteMinifiedTitle}`
+          );
           axios
             .patch(
               `https://api.godaddy.com/v1/domains/splurgedev.com/records`,
               [
                 {
                   type: "A",
-                  name: `${website.title
-                    .replace(/\s+/g, "")
-                    .replace(/[^A-Za-z0-9\s]/g, "")
-                    .replace(/\s{2,}/g, " ")
-                    .toLowerCase()}`,
+                  name: `${websiteMinifiedTitle}`,
                   data: "34.236.22.80"
                 }
               ],
