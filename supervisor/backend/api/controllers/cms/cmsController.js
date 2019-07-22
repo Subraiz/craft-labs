@@ -123,7 +123,11 @@ module.exports.publishWebsite = (req, res, websiteID) => {
     shell.exec(
       `./build-script ${req.params.website_id} ${
         process.env.BUILD_PATH
-      } ${website.title.replace(/\s+/g, "").toLowerCase()}`,
+      } ${website.title
+        .replace(/\s+/g, "")
+        .replace(/[^A-Za-z0-9\s]/g, "")
+        .replace(/\s{2,}/g, " ")
+        .toLowerCase()}`,
       {
         async: true,
         silent: true
