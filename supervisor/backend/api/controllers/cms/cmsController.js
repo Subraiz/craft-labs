@@ -135,9 +135,8 @@ module.exports.publishWebsite = (req, res, websiteID) => {
         ? `/Users/subraizahmed/documents/github/CraftLabs/website-generator`
         : `/var/www/CraftLabs/website-generator`;
     shell.cd(`${buildScriptPath}`);
-    shell.exec("gatsby clean");
     shell.exec(
-      `${buildScript} ${req.params.website_id} ${
+      `gatsby clean && ${buildScript} ${req.params.website_id} ${
         process.env.BUILD_PATH
       } ${websiteMinifiedTitle}`,
       {
