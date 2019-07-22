@@ -7,10 +7,13 @@ module.exports.getWebsiteByID = (req, res, websiteID) => {
   Website.findById(websiteID, function(err, website) {
     if (err) {
       console.log(err);
-      return res.status(500).json({ error: "Website Not Found" });
+      return res.status(500).json({ error: "Server Error" });
     } else {
-      console.log(website);
-      return res.status(200).json(website);
+      if (website === null || website === undefined) {
+        return res.status(404).json({ error: "Website doesn't exist." });
+      } else {
+        return res.status(200).json(website);
+      }
     }
   });
 };

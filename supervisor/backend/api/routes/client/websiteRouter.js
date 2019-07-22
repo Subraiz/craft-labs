@@ -4,6 +4,7 @@ const websiteController = require("../../controllers/client/websiteController");
 
 websiteRouter.get("/:website_id", (req, res) => {
   let websiteID = req.params.website_id;
+  console.log(websiteID);
   websiteController.getWebsiteByID(req, res, websiteID);
 });
 
