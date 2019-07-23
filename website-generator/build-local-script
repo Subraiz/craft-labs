@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+WEBSITE=${1?Error: Please enter website ID}
+BUILD_PATH=${2?Error: Please enter a build path directory}
+NAME=${3?Error: Please provide a website name}
+website=$WEBSITE gatsby build
+cp -a -f public/. $BUILD_PATH/$NAME
+
