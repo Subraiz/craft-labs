@@ -6,14 +6,15 @@ const mongoose = require("mongoose");
 require("dotenv").config();
 const { websiteRouter } = require("../api/routes/client");
 const { loginRouter, cmsRouter, userRouter } = require("../api/routes/cms");
-const { ifEquals } = require("./helpers");
+const { ifEquals, getHostName } = require("./helpers");
 
 // App server settings
 module.exports.appConfig = (app, directory) => {
   const hbs = exphbs.create({
     defaultLayout: "main",
     helpers: {
-      ifEquals: ifEquals
+      ifEquals: ifEquals,
+      getHostName: getHostName
     }
   });
 

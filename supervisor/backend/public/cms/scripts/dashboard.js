@@ -2,7 +2,7 @@ window.onload = () => {
   let ctx = document.getElementById("myChart");
   let windowWidth = window.innerWidth;
   let windowHeight = window.innerHeight;
-  let ratio = (windowWidth + 0.85 * windowWidth) / windowHeight;
+  let ratio = (windowWidth + 1 * windowWidth) / windowHeight;
 
   let dataConfiguration = {
     label: "Visitors",

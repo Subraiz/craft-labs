@@ -35,7 +35,7 @@ hr {
 }
 
 .dashboard-panels-container {
-  margin-top: 25px;
+  margin-top: 15px;
   display: grid;
   grid-template-columns: 30.5% 30.5% 30.5%;
   grid-column-gap: 4.25%;
@@ -46,7 +46,7 @@ hr {
   flex-flow: column;
   color: white;
   border-radius: 6px;
-  box-shadow: 6px 12px 14px rgba(0, 0, 0, 0.1);
+  box-shadow: 6px 12px 14px rgba(0, 0, 0, 0.05);
   border: 0.5px solid rgba(135, 135, 135, 0.15);
   position: relative;
   overflow: hidden;
@@ -145,17 +145,17 @@ hr {
 /* Control Tab Styling */
 .segemented-control-tab {
   position: absolute;
-  top: 40px;
+  top: 25px;
 }
 
 .control-tab-container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  width: 375px;
+  width: 345px;
   background-color: white;
   border-radius: 8px;
   position: relative;
-  padding: 0 8px;
+  padding: 0 6px;
   border: 0.5px solid rgba(0, 0, 0, 0.08);
 }
 
@@ -177,6 +177,7 @@ hr {
   z-index: 2;
   font-family: publicSansExtraLight;
   transition: 0.2s linear;
+  margin: 10px 0;
 }
 
 .control-tab:hover {
@@ -189,6 +190,41 @@ hr {
 
 .selected-control-tab {
   color: white;
+}
+
+.dashboard-visit-site-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.visit-site-button {
+  color: white;
+  font-family: publicSansLight;
+  background-color: #331059;
+  padding: 8px 22px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dashboard-site-status {
+  font-family: publicSansExtraLight;
+  position: relative;
+}
+
+.dashboard-site-status::before {
+  content: "";
+  height: 5px;
+  width: 5px;
+  border-radius: 2.5px;
+  position: absolute;
+  bottom: 50%;
+  margin-bottom: -2.5px;
+  background-color: seagreen;
+  margin-left: -15px;
 }
 
 @media (max-width: 414px) {
