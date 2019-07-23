@@ -23,7 +23,7 @@ class Website extends Component {
   renderPage = () => {
     console.log(this.page.name)
     let Page = Components[this.page.name.toLowerCase()]
-    return <Pages page={this.page} />
+    return <Page page={this.page} />
   }
 
   render() {
