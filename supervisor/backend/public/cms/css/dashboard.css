@@ -196,6 +196,7 @@ hr {
   width: 100%;
   display: flex;
   justify-content: space-between;
+  flex-flow: row-reverse;
   align-items: center;
 }
 
@@ -213,6 +214,7 @@ hr {
 .dashboard-site-status {
   font-family: publicSansExtraLight;
   position: relative;
+  margin-left: 15px;
 }
 
 .dashboard-site-status::before {

@@ -8,12 +8,7 @@ navigationLinks.forEach(link => {
     event.preventDefault();
     let url = window.location.origin + `${websiteBaseURL}` + `/${pageLink}`;
     let parentDiv = getClosest(link, ".sidebar-item");
-    let icons = document.querySelectorAll(".sidebar-item");
-    icons.forEach(icon => {
-      if (icon.classList.contains("active")) {
-        icon.classList.remove("active");
-      }
-    });
+    document.querySelector(".active").classList.remove("active");
     parentDiv.classList.add("active");
 
     setTimeout(() => {
