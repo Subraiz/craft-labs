@@ -36,36 +36,8 @@ module.exports.renderWebsiteManger = (req, res) => {
   });
 };
 
-// Render dashboard for CMS
-module.exports.renderDashboard = (req, res) => {
-  Website.findById(req.params.website_id, function(err, website) {
-    if (err) {
-      res.status(500).json({ error: "Server Error" });
-    } else {
-      if (err) {
-        res.status(500).json({ error: "Server Error" });
-      } else {
-        // Get user email and information
-        User.findById(website.userID, function(err, user) {
-          let websiteConfiguration = Object.assign({}, website)._doc;
-          websiteConfiguration = {
-            ...websiteConfiguration,
-            dashboard: true,
-            websiteID: req.params.website_id,
-            email: user.email
-          };
-          return res.render("dashboard", {
-            ...websiteConfiguration,
-            layout: "base"
-          });
-        });
-      }
-    }
-  });
-};
-
-// Redner company infromation for CMS
-module.exports.renderCompanyInformation = (req, res) => {
+// Render website page
+module.exports.renderPage = (req, res, page) => {
   Website.findById(req.params.website_id, function(err, website) {
     if (err) {
       res.status(500).json({ error: "Server Error" });
@@ -75,13 +47,14 @@ module.exports.renderCompanyInformation = (req, res) => {
       } else {
         User.findById(website.userID, function(err, user) {
           let websiteConfiguration = Object.assign({}, website)._doc;
+          // Set the current page as true so handlebars can give it proper styling
+          websiteConfiguration.page = page;
           websiteConfiguration = {
             ...websiteConfiguration,
-            companyInfo: true,
             websiteID: req.params.website_id,
             email: user.email
           };
-          return res.render("companyInformation", {
+          return res.render(page, {
             ...websiteConfiguration,
             layout: "base"
           });

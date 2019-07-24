@@ -11,7 +11,7 @@
 
 
   <div class="sidebar-items">
-    <div class="sidebar-item {{#if dashboard}} active {{/if}}">
+    <div class="sidebar-item {{#ifEquals page "dashboard"}} active {{/ifEquals}}">
       <div class="line-container dashboard-item ">
         <a href="">
           <div class="icon-container">
@@ -23,17 +23,17 @@
       <a href=""><p>Dashboard</p></a>
     </div>
 
-      <div class="sidebar-item  {{#if companyInfo}} active {{/if}}">
+      <div class="sidebar-item {{#ifEquals page "companyInformation"}} active {{/ifEquals}}">
         <div class="line-container company-info-item">
-          <a href="companyinfo"><div class="icon-container">
+          <a href="companyInformation"><div class="icon-container">
             <i class="fas fa-info-circle"></i>
           </div></a>
           <div class="sidebar-line"></div>
         </div>
-        <a href="companyinfo"><p>Company Info</p></a>
+        <a href="companyInformation"><p>Company Info</p></a>
       </div>
 
-    <div class="sidebar-item">
+    <div class="sidebar-item {{#ifEquals page "pages"}} active {{/ifEquals}}">
       <div class="line-container">
         <a href="pages">
           <div class="icon-container">
@@ -45,7 +45,7 @@
       <a href="pages"><p>Pages</p></a>
     </div>
 
-    <div class="sidebar-item">
+    <div class="sidebar-item {{#ifEquals page "features"}} active {{/ifEquals}}">
       <div class="line-container">
         <a href="features">
         <div class="icon-container">
@@ -59,7 +59,7 @@
 
 
     {{#ifEquals type "restaurant"}}
-    <div class="sidebar-item">
+    <div class="sidebar-item {{#ifEquals page "orders"}} active {{/ifEquals}}">
       <div class="line-container">
         <a href="orders">
           <div class="icon-container">
@@ -73,19 +73,19 @@
 
   {{/ifEquals}}
 
-    <div class="sidebar-item">
+    <div class="sidebar-item {{#ifEquals page "accountSettings"}} active {{/ifEquals}}">
       <div class="line-container">
-        <a href="settings">
+        <a href="accountSettings">
           <div class="icon-container">
             <i class="fas fa-cog"></i>
           </div>
         </a>
         <div class="sidebar-line"></div>
       </div>
-      <a href="settings"><p>Account Settings</p></a>
+      <a href="accountSettings"><p>Account Settings</p></a>
     </div>
 
-    <div class="sidebar-item">
+    <div class="sidebar-item {{#ifEquals page "support"}} active {{/ifEquals}}">
       <div class="line-container">
         <a href="support">
           <div class="icon-container">
