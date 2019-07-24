@@ -1,6 +1,6 @@
 
 
-<div class="sidebar-container">
+<div class="sidebar-container" data-websiteID={{websiteID}} id="websiteID">
   <div class="sidebar-header-container">
     <img src="../../cms/images/CompanyLogo.png" alt="">
   </div>
@@ -13,88 +13,88 @@
   <div class="sidebar-items">
     <div class="sidebar-item {{#ifEquals page "dashboard"}} active {{/ifEquals}}">
       <div class="line-container dashboard-item ">
-        <a href="">
-          <div class="icon-container">
-            <i class="fas fa-tachometer-alt"></i>
+        <a class="navigation-link" href="">
+          <div class="icon-container ">
+            <i class="fas fa-tachometer-alt dashboard-icon"></i>
           </div>
         </a>
         <div class="sidebar-line"></div>
       </div>
-      <a href=""><p>Dashboard</p></a>
+      <a class="navigation-link" href=""><p>Dashboard</p></a>
     </div>
 
       <div class="sidebar-item {{#ifEquals page "companyInformation"}} active {{/ifEquals}}">
         <div class="line-container company-info-item">
-          <a href="companyInformation"><div class="icon-container">
+          <a class="navigation-link" href="companyInformation"><div class="icon-container">
             <i class="fas fa-info-circle"></i>
           </div></a>
           <div class="sidebar-line"></div>
         </div>
-        <a href="companyInformation"><p>Company Info</p></a>
+        <a class="navigation-link" href="companyInformation"><p>Company Info</p></a>
       </div>
 
     <div class="sidebar-item {{#ifEquals page "pages"}} active {{/ifEquals}}">
       <div class="line-container">
-        <a href="pages">
+        <a class="navigation-link" href="pages">
           <div class="icon-container">
-            <i class="fas fa-file"></i>
+            <i class="fas fa-palette"></i>
           </div>
         </a>
         <div class="sidebar-line"></div>
       </div>
-      <a href="pages"><p>Pages</p></a>
+      <a class="navigation-link" href="pages"><p>Pages</p></a>
     </div>
 
     <div class="sidebar-item {{#ifEquals page "features"}} active {{/ifEquals}}">
       <div class="line-container">
-        <a href="features">
+        <a class="navigation-link" href="features">
         <div class="icon-container">
           <i class="fas fa-star"></i>
         </div>
         </a>
         <div class="sidebar-line"></div>
       </div>
-      <a href="features"><p>Features</p></a>
+      <a class="navigation-link" href="features"><p>Features</p></a>
     </div>
 
 
     {{#ifEquals type "restaurant"}}
     <div class="sidebar-item {{#ifEquals page "orders"}} active {{/ifEquals}}">
       <div class="line-container">
-        <a href="orders">
+        <a class="navigation-link" href="orders">
           <div class="icon-container">
-            <i class="fas fa-utensils"></i>
+            <i class="fas fa-coins"></i>
           </div>
         </a>
         <div class="sidebar-line"></div>
       </div>
-      <a href="orders"><p>Orders</p></a>
+      <a class="navigation-link" href="orders"><p>Orders</p></a>
     </div>
 
   {{/ifEquals}}
 
     <div class="sidebar-item {{#ifEquals page "accountSettings"}} active {{/ifEquals}}">
       <div class="line-container">
-        <a href="accountSettings">
+        <a class="navigation-link" href="accountSettings">
           <div class="icon-container">
             <i class="fas fa-cog"></i>
           </div>
         </a>
         <div class="sidebar-line"></div>
       </div>
-      <a href="accountSettings"><p>Account Settings</p></a>
+      <a class="navigation-link" href="accountSettings"><p>Account Settings</p></a>
     </div>
 
     <div class="sidebar-item {{#ifEquals page "support"}} active {{/ifEquals}}">
       <div class="line-container">
-        <a href="support">
+        <a class="navigation-link" href="support">
           <div class="icon-container">
             <i class="fas fa-question-circle"></i>
           </div>
         </a>
         <div class="sidebar-line"></div>
       </div>
-      <a href="support"><p>Support</p></a>
+      <a class="navigation-link" href="support"><p>Support</p></a>
     </div>
 
 
@@ -107,3 +107,5 @@
   </div>
 
 </div>
+
+<script type="text/javascript" src="../../cms/scripts/sidebar.js"></script>
