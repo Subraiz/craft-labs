@@ -1,14 +1,14 @@
 import React, { Component } from "react"
 import styles from "./styles.module.scss"
 
-class RestaurantPage1 extends Component {
+class Team extends Component {
   render() {
     return (
       <div>
-        <h1>Test</h1>
+        <h3>Team Section</h3>
       </div>
     )
   }
 }
 
-export { RestaurantPage1 }
+export { Team }

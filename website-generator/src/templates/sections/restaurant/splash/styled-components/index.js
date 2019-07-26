@@ -1,0 +1,6 @@
+export * from "./Parallax"
+export * from "./DescriptionCTA"
+export * from "./HeaderCTA"
+export * from "./MainContainer"
+export * from "./ContentContainer"
+export * from "./ImageOverlay"

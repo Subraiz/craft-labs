@@ -18,12 +18,20 @@ let ContentSchema = mongoose.Schema({
 });
 
 let SectionSchmea = mongoose.Schema({
-  type: String,
+  type: {
+    type: String,
+    required: true
+  },
+  name: {
+    type: String,
+    default: "Section"
+  },
   content: [ContentSchema]
 });
 
 let PageSchema = mongoose.Schema({
   name: String,
+  type: String,
   sections: [SectionSchmea]
 });
 
@@ -60,10 +68,15 @@ let WebsiteSchema = mongoose.Schema({
     type: String, // Check what type of website we are working with
     required: true
   },
+  theme: {
+    type: String,
+    required: true
+  },
   dateCreated: {
     type: Date,
     default: Date.now()
   },
+  navbar: String,
   features: [FeatureSchema],
   pages: [PageSchema],
   domain: String,
