@@ -28,10 +28,7 @@ class SingleClassicNavbar extends Component {
     this.sectionScrollSpan = []
     let totalScrollHeight = 0
     sectionContainers.forEach((container, index) => {
-      totalScrollHeight =
-        index == 0
-          ? 0
-          : totalScrollHeight + container.clientHeight + window.innerHeight / 4
+      totalScrollHeight = totalScrollHeight + container.clientHeight
       this.sectionScrollSpan.push(totalScrollHeight)
     })
   }
@@ -59,33 +56,19 @@ class SingleClassicNavbar extends Component {
           })
         }
       }
+
       // Handle selecting proper navbar item on scroll
-      if (this.sectionScrollSpan.length > 1) {
-        setTimeout(() => {
-          this.sectionScrollSpan.some((span, index) => {
-            if (
-              index == 0 &&
-              scrollDistance < this.sectionScrollSpan[index + 1] + span
-            ) {
-              this.setState({ selectedNavbarItemIndex: index })
-              return true
-            } else if (
-              index < this.sectionScrollSpan.length - 1 &&
-              scrollDistance < span &&
-              scrollDistance < this.sectionScrollSpan[index + 1]
-            ) {
-              this.setState({ selectedNavbarItemIndex: index })
-              return true
-            } else if (
-              index == this.sectionScrollSpan.length - 1 &&
-              scrollDistance > this.sectionScrollSpan[index - 1]
-            ) {
-              this.setState({ selectedNavbarItemIndex: index })
-              return true
-            }
-          })
-        }, 150)
-      }
+      let selectedNavbarItemIndex = this.sectionScrollSpan.findIndex(
+        element => {
+          return scrollDistance * 1.75 < element
+        }
+      )
+      // If user scroll to far down make the selected index the last section on the page
+      selectedNavbarItemIndex =
+        selectedNavbarItemIndex == -1
+          ? this.sectionScrollSpan.length - 1
+          : selectedNavbarItemIndex
+      this.setState({ selectedNavbarItemIndex })
     }
   }
 
@@ -103,9 +86,8 @@ class SingleClassicNavbar extends Component {
       let scrollDistance =
         clickedIndex == 0
           ? 0
-          : this.sectionScrollSpan[clickedIndex - 1] +
-            this.sectionScrollSpan[clickedIndex] +
-            window.innerHeight / 5
+          : this.sectionScrollSpan[clickedIndex - 1] -
+            this.navbar.current.clientHeight
       window.scrollTo({
         top: scrollDistance,
         behavior: "smooth",
@@ -128,7 +110,7 @@ class SingleClassicNavbar extends Component {
             onClick={this.toggleActiveItem}
           >
             <p className={[styles.navbarItem, activeStyle].join(" ")}>
-              {capitalizeString(section.name)}
+              {section.name}
             </p>
           </a>
         )
@@ -151,10 +133,6 @@ class SingleClassicNavbar extends Component {
       </div>
     )
   }
-}
-
-function capitalizeString(string) {
-  return string.charAt(0).toUpperCase() + string.slice(1)
 }
 
 export { SingleClassicNavbar }

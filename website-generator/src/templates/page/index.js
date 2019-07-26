@@ -11,13 +11,17 @@ class Page extends Component {
   renderSections = () => {
     return this.sections.map((section, index) => {
       let Section = this.sectionType[section.type.toLowerCase()]
-      return (
-        <Section
-          key={index}
-          section={section}
-          id={section.name.replace(/\s/g, "")}
-        />
-      )
+      if (Section == undefined || !Section) {
+        return <h1 key={index}>Error: No Section for: {section.type}</h1>
+      } else {
+        return (
+          <Section
+            key={index}
+            section={section}
+            id={section.name.replace(/\s/g, "")}
+          />
+        )
+      }
     })
   }
 
