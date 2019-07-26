@@ -7,7 +7,7 @@ const OutlineButton = props => {
     padding: 12px 35px;
     border: 1px solid ${props.borderColor || "white"};
     border-radius: 2px;
-    transition: 0.2s linear;
+    transition: 0.3s linear;
     :hover {
       border: 1px solid ${props.hoverColor || "rgba(252, 98, 3, .65)"};
       background-color: ${props.hoverColor || "rgba(252, 98, 3, .65)"};
