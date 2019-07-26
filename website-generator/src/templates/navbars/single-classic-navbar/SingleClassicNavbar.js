@@ -84,10 +84,7 @@ class SingleClassicNavbar extends Component {
 
       // Handle scrolling to specific section
       let scrollDistance =
-        clickedIndex == 0
-          ? 0
-          : this.sectionScrollSpan[clickedIndex - 1] -
-            this.navbar.current.clientHeight
+        clickedIndex == 0 ? 0 : this.sectionScrollSpan[clickedIndex - 1] * 0.8
       window.scrollTo({
         top: scrollDistance,
         behavior: "smooth",

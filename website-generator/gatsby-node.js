@@ -1,13 +1,12 @@
 const axios = require("axios")
 
 let websiteID = process.env.website
-websiteID = "5d3b49b78535127c48623a33"
+websiteID = "5d3b84c48535127c48623a78"
 const WEBSITE_API = `http://127.0.0.1:3000/website/${websiteID}`
 
 exports.createPages = async ({ actions: { createPage } }) => {
   let response = await axios.get(WEBSITE_API).catch(err => console.log(err))
   const website = response.data
-  console.log(website.theme)
   let themePackPath = `./src/themes/${website.type.toLowerCase()}/${website.theme
     .split("-")[0]
     .toLowerCase()}/${website.theme.toLowerCase()}`
