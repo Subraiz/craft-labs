@@ -109,7 +109,7 @@ module.exports.publishWebsite = (req, res, websiteID) => {
         : `/var/www/CraftLabs/website-generator`;
     shell.cd(`${buildScriptPath}`);
     shell.exec(
-      `gatsby clean && ${buildScript} ${req.params.website_id} ${
+      `${buildScript} ${req.params.website_id} ${
         process.env.BUILD_PATH
       } ${websiteMinifiedTitle}`,
       {
