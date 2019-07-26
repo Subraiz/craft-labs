@@ -1,1 +1,1 @@
-export * from "./Single-classic-navbar/SingleClassicNavbar.js"
+export * from "./single-classic-navbar/SingleClassicNavbar.js"
