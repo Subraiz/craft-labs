@@ -10,10 +10,6 @@ exports.createPages = async ({ actions: { createPage } }) => {
   let themePackPath = `./src/themes/${website.type.toLowerCase()}/${website.theme
     .split("-")[0]
     .toLowerCase()}/${website.theme.toLowerCase()}`
-
-  website.pages[0].section.forEach(section => {
-    console.log(section)
-  })
   website.pages.forEach((page, index) => {
     if (index === 0) {
       createPage({
