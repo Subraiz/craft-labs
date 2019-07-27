@@ -18,6 +18,7 @@ class Page extends Component {
           <Section
             key={index}
             section={section}
+            website={this.props.website}
             id={section.name.replace(/\s/g, "")}
           />
         )

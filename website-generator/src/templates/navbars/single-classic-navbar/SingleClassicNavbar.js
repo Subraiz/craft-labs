@@ -60,7 +60,7 @@ class SingleClassicNavbar extends Component {
       // Handle selecting proper navbar item on scroll
       let selectedNavbarItemIndex = this.sectionScrollSpan.findIndex(
         element => {
-          return scrollDistance * 1.75 < element
+          return scrollDistance * 1.5 < element
         }
       )
       // If user scroll to far down make the selected index the last section on the page
@@ -84,7 +84,7 @@ class SingleClassicNavbar extends Component {
 
       // Handle scrolling to specific section
       let scrollDistance =
-        clickedIndex == 0 ? 0 : this.sectionScrollSpan[clickedIndex - 1] * 0.8
+        clickedIndex == 0 ? 0 : this.sectionScrollSpan[clickedIndex - 1] * 0.78
       window.scrollTo({
         top: scrollDistance,
         behavior: "smooth",

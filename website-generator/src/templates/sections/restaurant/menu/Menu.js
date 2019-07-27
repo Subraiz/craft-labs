@@ -17,6 +17,8 @@ import {
   CategoriesContainer,
   Category,
   IngredientsContainer,
+  Spacer,
+  SpacerOverlay,
 } from "./styled-components"
 
 const Ingredients = styled(IngredientsContainer)`
@@ -97,13 +99,15 @@ class Menu extends Component {
 
   render() {
     return (
-      <MenuSection>
-        <HeaderCTA>Today's Menu</HeaderCTA>
-        <CategoriesContainer>{this.renderCategories()}</CategoriesContainer>
-        <MenuContainer>
-          <MenuItemsContainer>{this.renderMenuItems()}</MenuItemsContainer>
-        </MenuContainer>
-      </MenuSection>
+      <div>
+        <MenuSection>
+          <HeaderCTA>Today's Menu</HeaderCTA>
+          <CategoriesContainer>{this.renderCategories()}</CategoriesContainer>
+          <MenuContainer>
+            <MenuItemsContainer>{this.renderMenuItems()}</MenuItemsContainer>
+          </MenuContainer>
+        </MenuSection>
+      </div>
     )
   }
 }

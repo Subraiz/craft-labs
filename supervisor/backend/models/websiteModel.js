@@ -86,6 +86,13 @@ let WebsiteSchema = mongoose.Schema({
   },
   visitors: [VisitorSchema],
   companyInformation: {
+    address: {
+      value: String,
+      isVisible: {
+        type: Boolean,
+        default: true
+      }
+    },
     title: {
       value: String,
       isVisible: {

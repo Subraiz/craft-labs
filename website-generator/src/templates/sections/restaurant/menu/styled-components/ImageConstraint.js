@@ -7,6 +7,7 @@ const ImageConstraint = styled.div`
   overflow: hidden;
   box-shadow: 2px 4px 12px 4px rgba(0, 0, 0, 0.08);
   position: relative;
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
 `
 
 export { ImageConstraint }

@@ -6,11 +6,14 @@ const ItemImageContainer = styled.div`
   width: 100%;
   height: 100%;
   background-size: cover;
-  overflow: hidden;
   transition: 0.25s linear;
-
+  overflow: hidden;
+  border-radius: 25px;
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
   :hover {
     transform: scale(1.15) rotate(5deg);
+    overflow: hidden;
+    border-radius: 25px;
     transition: 0.25s linear;
   }
 `

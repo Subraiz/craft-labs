@@ -6,6 +6,13 @@ const ItemCategory = styled.p`
   margin: 0px;
   margin-left: 5px;
   color: rgba(0, 0, 0, 0.5);
+
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 `
 
 export { ItemCategory }

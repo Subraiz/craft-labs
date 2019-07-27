@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 import { SingleClassicNavbar } from "../../../templates/navbars"
+import { Footer } from "../../../templates/footers"
 import Page from "../../../templates/page"
 import styles from "./styles.module.scss"
 
@@ -38,8 +39,18 @@ class Theme extends Component {
 
   renderPage = () => {
     if (this.state.readyToRender) {
-      return <Page page={this.page} websiteType={this.website.type} />
+      return (
+        <Page
+          page={this.page}
+          websiteType={this.website.type}
+          website={this.website}
+        />
+      )
     }
+  }
+
+  renderFooter = () => {
+    return <Footer companyName={this.website.companyInformation.title.value} />
   }
 
   render() {
@@ -47,6 +58,7 @@ class Theme extends Component {
       <div>
         {this.renderNavbar()}
         {this.renderPage()}
+        {this.renderFooter()}
       </div>
     )
   }
