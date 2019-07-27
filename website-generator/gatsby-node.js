@@ -11,6 +11,7 @@ exports.createPages = async ({ actions: { createPage } }) => {
     .split("-")[0]
     .toLowerCase()}/${website.theme.toLowerCase()}`
 
+  console.log(website)
   website.pages.forEach((page, index) => {
     if (index === 0) {
       createPage({
