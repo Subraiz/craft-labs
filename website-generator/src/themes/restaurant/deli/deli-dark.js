@@ -2,6 +2,7 @@ import React, { Component } from "react"
 import { SingleClassicNavbar } from "../../../templates/navbars"
 import { Footer } from "../../../templates/footers"
 import Page from "../../../templates/page"
+import { Team } from "../../../templates/sections/restaurant/team/Team"
 import styles from "./styles.module.scss"
 
 const Navbars = {

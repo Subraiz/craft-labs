@@ -30,8 +30,9 @@ const Ingredients = styled(IngredientsContainer)`
 class Menu extends Component {
   constructor(props) {
     super(props)
-    this.categories = this.props.section.content[0]
-    this.menu = this.props.section.content.slice(1)
+    this.title = this.props.section.content[0].data
+    this.categories = this.props.section.content[1]
+    this.menu = this.props.section.content.slice(2)
     this.state = {
       category: this.categories.data[0],
       menu: this.menu,
@@ -101,7 +102,7 @@ class Menu extends Component {
     return (
       <div>
         <MenuSection>
-          <HeaderCTA>Today's Menu</HeaderCTA>
+          <HeaderCTA>{this.title}</HeaderCTA>
           <CategoriesContainer>{this.renderCategories()}</CategoriesContainer>
           <MenuContainer>
             <MenuItemsContainer>{this.renderMenuItems()}</MenuItemsContainer>
