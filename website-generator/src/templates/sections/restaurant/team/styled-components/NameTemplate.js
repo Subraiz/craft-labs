@@ -1,8 +1,9 @@
 import styled from "styled-components"
 
 const NameTemplate = styled.p`
-  color: white;
-  font-family: "Ubuntu", sans-serif;
+  color: ${props => props.theme.overlayTextColor};
+  font-family: ${props => props.theme.mainFontFamily[0]},
+    ${props => props.theme.mainFontFamily[1]};
   font-weight: 500;
   z-index: 2;
   position: absolute;
@@ -15,5 +16,12 @@ const NameTemplate = styled.p`
   transition: 0.2s;
   transition-delay: 0.15s;
 `
+
+NameTemplate.defaultProps = {
+  theme: {
+    mainFontFamily: ["Ubuntu", "sans-serif"],
+    overlayTextColor: "white",
+  },
+}
 
 export { NameTemplate }

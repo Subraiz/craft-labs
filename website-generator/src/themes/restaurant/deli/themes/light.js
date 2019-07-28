@@ -14,6 +14,7 @@ const light = {
   secondaryFontFamily: ["Kaushan Script", "cursive"],
   footerColor: "white",
   overlayColor: "slategrey",
+  transparentOverlayColor: "rgba(0,0,0,.4)",
   overlayTextColor: "white",
   shadowColor: "rbga(0,0,0,.07)",
 }

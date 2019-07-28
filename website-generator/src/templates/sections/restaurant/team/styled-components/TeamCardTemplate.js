@@ -2,7 +2,6 @@ import styled from "styled-components"
 
 const TeamCardTemplate = styled.div`
   position: relative;
-  background-color: red;
   overflow: hidden;
   padding: 175px 0;
   border-radius: 5px;

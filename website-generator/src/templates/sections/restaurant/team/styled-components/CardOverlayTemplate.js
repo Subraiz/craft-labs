@@ -5,7 +5,7 @@ const CardOverlayTemplate = styled.div`
   width: 100%;
   margin: -175px 0;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: ${props => props.theme.transparentOverlayColor};
   opacity: 0;
   transition: 0.2s linear;
   margin: auto;
@@ -15,5 +15,11 @@ const CardOverlayTemplate = styled.div`
   bottom: 0;
   z-index: 1;
 `
+
+CardOverlayTemplate.defaultProps = {
+  theme: {
+    transparentOverlayColor: "rgba(0,0,0,.4)",
+  },
+}
 
 export { CardOverlayTemplate }

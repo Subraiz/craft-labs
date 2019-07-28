@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import Swiper from "react-id-swiper"
-import styled from "styled-components"
+import styled, { ThemeProvider } from "styled-components"
 import "react-id-swiper/lib/styles/css/swiper.css"
 import {
   TeamCardTemplate,
@@ -9,6 +9,7 @@ import {
   NameTemplate,
   DescriptionTemplate,
   HeaderCTA,
+  TeamSection,
 } from "./styled-components"
 
 const params = {
@@ -48,7 +49,6 @@ const Description = styled(DescriptionTemplate)`
 class Team extends Component {
   constructor(props) {
     super(props)
-
     this.title = this.props.section.content[0].data
     this.team = this.props.section.content.slice(1)
   }
@@ -70,12 +70,14 @@ class Team extends Component {
 
   render() {
     return (
-      <div>
-        <HeaderCTA>{this.title}</HeaderCTA>
-        <TeamContainer>
-          <Swiper {...params}>{this.renderTeamCards()}</Swiper>
-        </TeamContainer>
-      </div>
+      <ThemeProvider theme={this.props.theme}>
+        <TeamSection>
+          <HeaderCTA>{this.title}</HeaderCTA>
+          <TeamContainer>
+            <Swiper {...params}>{this.renderTeamCards()}</Swiper>
+          </TeamContainer>
+        </TeamSection>
+      </ThemeProvider>
     )
   }
 }
