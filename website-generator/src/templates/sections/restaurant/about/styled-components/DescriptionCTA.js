@@ -1,8 +1,10 @@
 import styled from "styled-components"
 
 const DescriptionCTA = styled.div`
-  font-family: "Ubuntu", sans-serif;
-  color: rgba(0, 0, 0, 0.8);
+  font-family: ${props => props.theme.mainFontFamily[0]},
+    ${props => props.theme.mainFontFamily[1]};
+  color: ${props => props.theme.paragraphColor};
+  opacity: 0.8;
   line-height: 20px;
   font-weight: 300;
   :first-of-type::first-letter {
@@ -24,5 +26,12 @@ const DescriptionCTA = styled.div`
   -ms-user-select: none;
   user-select: none;
 `
+
+DescriptionCTA.defaultProps = {
+  theme: {
+    paragraphColor: "black",
+    mainFontFamily: ["Ubuntu", "sans-serif"],
+  },
+}
 
 export { DescriptionCTA }

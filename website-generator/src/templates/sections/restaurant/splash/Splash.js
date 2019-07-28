@@ -8,6 +8,7 @@ import {
   DescriptionCTA,
 } from "./styled-components"
 import { OutlineButton } from "../../../components"
+import styled, { ThemeProvider } from "styled-components"
 
 class Splash extends Component {
   constructor(props) {
@@ -17,16 +18,18 @@ class Splash extends Component {
 
   render() {
     return (
-      <MainContainer id={this.props.id}>
-        <Parallax>
-          <ImageOverlay />
-        </Parallax>
-        <ContentContainer>
-          <HeaderCTA>{this.content[0].data}</HeaderCTA>
-          <DescriptionCTA>{this.content[1].data}</DescriptionCTA>
-          <OutlineButton buttonText={"Order Now"} hoverColor={""} />
-        </ContentContainer>
-      </MainContainer>
+      <ThemeProvider theme={this.props.theme}>
+        <MainContainer id={this.props.id}>
+          <Parallax>
+            <ImageOverlay />
+          </Parallax>
+          <ContentContainer>
+            <HeaderCTA>{this.content[0].data}</HeaderCTA>
+            <DescriptionCTA>{this.content[1].data}</DescriptionCTA>
+            <OutlineButton buttonText={"Order Now"} hoverColor={""} />
+          </ContentContainer>
+        </MainContainer>
+      </ThemeProvider>
     )
   }
 }

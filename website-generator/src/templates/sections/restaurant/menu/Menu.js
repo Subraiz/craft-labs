@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import styled from "styled-components"
+import styled, { ThemeProvider, withTheme } from "styled-components"
 import {
   MenuContainer,
   MenuItemsContainer,
@@ -17,7 +17,6 @@ import {
   CategoriesContainer,
   Category,
   IngredientsContainer,
-  Spacer,
   SpacerOverlay,
 } from "./styled-components"
 
@@ -27,7 +26,7 @@ const Ingredients = styled(IngredientsContainer)`
   }
 `
 
-class Menu extends Component {
+class MenuTemplate extends Component {
   constructor(props) {
     super(props)
     this.title = this.props.section.content[0].data
@@ -47,8 +46,8 @@ class Menu extends Component {
     return this.categories.data.map((category, index) => {
       if (category == this.state.category) {
         const ActiveCategory = styled(Category)`
-          background-color: #ffd644;
-          color: black;
+          background-color: ${this.props.theme.tertiaryColor};
+          color: ${this.props.theme.paragraphColor};
         `
         return (
           <ActiveCategory
@@ -100,17 +99,21 @@ class Menu extends Component {
 
   render() {
     return (
-      <div>
-        <MenuSection>
-          <HeaderCTA>{this.title}</HeaderCTA>
-          <CategoriesContainer>{this.renderCategories()}</CategoriesContainer>
-          <MenuContainer>
-            <MenuItemsContainer>{this.renderMenuItems()}</MenuItemsContainer>
-          </MenuContainer>
-        </MenuSection>
-      </div>
+      <MenuContainer>
+        <ThemeProvider theme={this.props.theme}>
+          <MenuSection>
+            <HeaderCTA>{this.title}</HeaderCTA>
+            <CategoriesContainer>{this.renderCategories()}</CategoriesContainer>
+            <MenuContainer>
+              <MenuItemsContainer>{this.renderMenuItems()}</MenuItemsContainer>
+            </MenuContainer>
+          </MenuSection>
+        </ThemeProvider>
+      </MenuContainer>
     )
   }
 }
+
+const Menu = withTheme(MenuTemplate)
 
 export { Menu }

@@ -1,8 +1,9 @@
 import styled from "styled-components"
 
 const HeaderCTA = styled.div`
-  font-family: "Kaushan Script", cursive;
-  color: white;
+  font-family: ${props => props.theme.secondaryFontFamily[0]},
+    ${props => props.theme.secondaryFontFamily[1]};
+  color: ${props => props.theme.primaryColor};
   font-size: 64px;
   margin: 0;
   -webkit-touch-callout: none;
@@ -12,5 +13,12 @@ const HeaderCTA = styled.div`
   -ms-user-select: none;
   user-select: none;
 `
+
+HeaderCTA.defaultProps = {
+  theme: {
+    secondaryFontFamily: ["Kaushan Script", "cursive"],
+    primaryColor: "white",
+  },
+}
 
 export { HeaderCTA }

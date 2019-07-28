@@ -1,32 +1,43 @@
 import React from "react"
-import styled from "styled-components"
+import styled, { withTheme } from "styled-components"
 
-const Button = props => {
+const ButtonTemplate = props => {
   const Button = styled.div`
     cursor: pointer;
     padding: 14px 45px;
-    background-color: white;
+    background-color: ${props => props.theme.buttonColor};
     z-index: 2;
     border-radius: 2px;
     transition: 0.2s linear;
-    color: #ca3d26;
+    color: ${props => props.theme.secondaryColor};
     :hover {
-      background-color: ${props.hoverColor || "#ca3d26"};
-      color: white;
+      background-color: ${props => props.theme.secondaryColor};
+      color: ${props => props.theme.buttonColor};
     }
   `
 
   const Text = styled.div`
-    font-family: "Ubuntu", sans-serif;
+    font-family: ${props => props.theme.mainFontFamily[0]},
+      ${props => props.theme.mainFontFamily[1]};
     font-weight: 500;
     font-size: 24px;
   `
 
   return (
-    <Button onClick={props.onClick} style={props.buttonStyle}>
-      <Text style={props.textStyle}>{props.buttonText}</Text>
+    <Button onClick={props.onClick}>
+      <Text>{props.buttonText}</Text>
     </Button>
   )
 }
+
+ButtonTemplate.defaultProps = {
+  theme: {
+    buttonColor: "white",
+    secondaryColor: "#ca3d26",
+    mainFontFamily: ["Ubuntu", "sans-serif"],
+  },
+}
+
+const Button = withTheme(ButtonTemplate)
 
 export { Button }

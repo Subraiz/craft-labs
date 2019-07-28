@@ -16,6 +16,7 @@ class Page extends Component {
       } else {
         return (
           <Section
+            theme={this.props.theme}
             key={index}
             section={section}
             website={this.props.website}

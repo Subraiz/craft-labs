@@ -1,19 +1,26 @@
 import React, { Component } from "react"
+import { light } from "./themes"
+import styles from "./styles.module.scss"
 import { SingleClassicNavbar } from "../../../templates/navbars"
 import { Footer } from "../../../templates/footers"
 import Page from "../../../templates/page"
-import { Team } from "../../../templates/sections/restaurant/team/Team"
-import styles from "./styles.module.scss"
 
 const Navbars = {
   singleclassicnavbar: SingleClassicNavbar,
+}
+
+const Themes = {
+  light: light,
 }
 
 // Deli - Dark Theme -- Single Page Website -- Two pages for testing purposes
 class Theme extends Component {
   constructor(props) {
     super(props)
+    // Grab the website off the page context we get from create pages in gatsby-node.js
     this.website = this.props.pageContext.website
+
+    // Specify which page we are rendering
     let path = this.props.path
     this.page = this.website.pages.find(
       obj => obj.name.toLowerCase() === path.slice(1).toLowerCase()
@@ -22,6 +29,8 @@ class Theme extends Component {
       this.page = this.website.pages[0]
     }
 
+    // Specify the theme the website will use
+    this.theme = Themes[this.website.theme.split("-")[1]]
     this.state = {
       readyToRender: false,
     }
@@ -45,6 +54,7 @@ class Theme extends Component {
           page={this.page}
           websiteType={this.website.type}
           website={this.website}
+          theme={this.theme}
         />
       )
     }
@@ -63,10 +73,6 @@ class Theme extends Component {
       </div>
     )
   }
-}
-
-function capitalizeString(string) {
-  return string.charAt(0).toUpperCase() + string.slice(1)
 }
 
 export default Theme

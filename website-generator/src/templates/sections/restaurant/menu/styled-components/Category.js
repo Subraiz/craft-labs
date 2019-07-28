@@ -2,13 +2,22 @@ import styled from "styled-components"
 
 const Category = styled.div`
   transition: 0.2s linear;
-  background-color: #f7f7f7;
+  background-color: ${props => props.theme.secondaryBGColor};
   padding: 8px 25px;
   margin-right: 20px;
   border-radius: 15px;
-  font-family: "Ubuntu", sans-serif;
+  font-family: ${props => props.theme.mainFontFamily[0]},
+    ${props => props.theme.mainFontFamily[1]};
   cursor: pointer;
-  color: rgba(0, 0, 0, 0.5);
+  color: ${props => props.theme.secondaryParagraphColor};
 `
+
+Category.defaultProps = {
+  theme: {
+    mainFontFamily: ["Ubuntu", "sans-serif"],
+    secondaryParagraphColor: "rgba(0,0,0,.5)",
+    secondaryBGColor: "#f7f7f7",
+  },
+}
 
 export { Category }

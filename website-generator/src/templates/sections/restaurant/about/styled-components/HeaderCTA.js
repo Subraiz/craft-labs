@@ -2,8 +2,9 @@ import styled from "styled-components"
 
 const HeaderCTA = styled.div`
   font-size: 64px;
-  font-family: "Kaushan Script", cursive;
-  color: #ca3d26;
+  font-family: ${props => props.theme.secondaryFontFamily[0]},
+    ${props => props.theme.secondaryFontFamily[1]};
+  color: ${props => props.theme.secondaryColor};
   text-align: center;
   margin-top: -20px;
   margin-bottom: 20px;
@@ -15,5 +16,12 @@ const HeaderCTA = styled.div`
   -ms-user-select: none;
   user-select: none;
 `
+
+HeaderCTA.defaultProps = {
+  theme: {
+    secondaryFontFamily: ["Ubuntu", "sans-serif"],
+    secondaryColor: "#ca3d26",
+  },
+}
 
 export { HeaderCTA }

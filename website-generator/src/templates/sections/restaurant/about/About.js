@@ -1,4 +1,5 @@
 import React, { Component } from "react"
+import styled, { ThemeProvider } from "styled-components"
 import {
   MainContainer,
   DescriptionCTAContainer,
@@ -34,18 +35,20 @@ class About extends Component {
 
   render() {
     return (
-      <MainContainer id={this.props.id}>
-        <HeaderCTA>{this.content[0].data}</HeaderCTA>
-        <DescriptionCTAContainer>
-          <DescriptionCTA>{this.paragraph1}</DescriptionCTA>
-          <DescriptionCTA>{this.paragraph2}</DescriptionCTA>
-        </DescriptionCTAContainer>
-        <Spacer>
-          <ImageOverlay />
-          <p>Now you can order online!</p>
-          <Button buttonText={"Order Now"} />
-        </Spacer>
-      </MainContainer>
+      <ThemeProvider theme={this.props.theme}>
+        <MainContainer id={this.props.id}>
+          <HeaderCTA>{this.content[0].data}</HeaderCTA>
+          <DescriptionCTAContainer>
+            <DescriptionCTA>{this.paragraph1}</DescriptionCTA>
+            <DescriptionCTA>{this.paragraph2}</DescriptionCTA>
+          </DescriptionCTAContainer>
+          <Spacer>
+            <ImageOverlay />
+            <p>Now you can order online!</p>
+            <Button buttonText={"Order Now"} />
+          </Spacer>
+        </MainContainer>
+      </ThemeProvider>
     )
   }
 }
