@@ -1,4 +1,5 @@
 import React, { Component } from "react"
+import smoothscroll from "smoothscroll-polyfill"
 import { light } from "./themes"
 import styles from "./styles.module.scss"
 import { SingleClassicNavbar } from "../../../templates/navbars"
@@ -38,12 +39,15 @@ class Theme extends Component {
 
   componentDidMount() {
     this.setState({ readyToRender: true })
+    smoothscroll.polyfill() // Support for safari smooth scrolling
   }
 
   renderNavbar = () => {
     if (this.state.readyToRender) {
       let Navbar = Navbars[this.website.navbar.toLowerCase()]
-      return <Navbar sections={this.website.pages[0].sections} />
+      return (
+        <Navbar sections={this.website.pages[0].sections} theme={this.theme} />
+      )
     }
   }
 
