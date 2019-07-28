@@ -16,7 +16,7 @@ const light = {
   overlayColor: "slategrey",
   transparentOverlayColor: "rgba(0,0,0,.4)",
   overlayTextColor: "white",
-  shadowColor: "rbga(0,0,0,.07)",
+  shadowColor: "rgba(0,0,0,.1)",
 }
 
 export { light }

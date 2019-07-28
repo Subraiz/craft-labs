@@ -1,13 +1,11 @@
 import React, { Component } from "react"
-import styled, { keyframes } from "styled-components"
+import styled, { keyframes, ThemeProvider } from "styled-components"
 import { Link } from "gatsby"
 import {
   NavbarContainer,
-  ScrollNavbarContainer,
   Navbar,
   ItemsContainer,
   Item,
-  ActiveItem,
   ItemLink,
 } from "./styled-components"
 
@@ -16,6 +14,8 @@ const config = {
   backgroundColor: "rgba(0,0,0,0)",
   position: "absolute",
   paddingTop: "15px",
+  boxShadow: "",
+  borderBottom: "",
 }
 
 class SingleClassicNavbar extends Component {
@@ -62,10 +62,12 @@ class SingleClassicNavbar extends Component {
         // Check to see if style is already applied or not, we do not want to keep
         // applying the style on every scroll.
         const scrollConfig = {
-          color: "black",
-          backgroundColor: "white",
+          color: this.props.theme.navlinkColor,
+          backgroundColor: this.props.theme.navbarColor,
           position: "fixed",
           paddingTop: 0,
+          boxShadow: "2px 5px 14px 2px",
+          borderBottom: `1px solid`,
         }
         this.setState({ config: scrollConfig })
       } else {
@@ -114,15 +116,22 @@ class SingleClassicNavbar extends Component {
   renderNavigation = () => {
     if (this.state.renderReady) {
       return this.state.sections.map((section, index) => {
-        let NavItem =
-          index == this.state.selectedNavbarItemIndex ? ActiveItem : Item
+        let config =
+          index == this.state.selectedNavbarItemIndex
+            ? {
+                color: this.state.config.color,
+                fontSize: "22px",
+                weight: "bold",
+                borderBottom: "1px solid",
+              }
+            : { color: this.state.config.color, fontSize: "19px" }
         return (
           <ItemLink
             data-index={index}
             key={section.name}
             onClick={this.toggleActiveItem}
           >
-            <NavItem config={this.state.config}>{section.name}</NavItem>
+            <Item config={config}>{section.name}</Item>
           </ItemLink>
         )
       })
@@ -131,14 +140,16 @@ class SingleClassicNavbar extends Component {
 
   render() {
     return (
-      <NavbarContainer ref={this.navbar} config={this.state.config}>
-        <Navbar>
-          <img src="https://cdn.freebiesupply.com/images/large/2x/philadelphia-eagles-logo-black-and-white.png" />
-          <ItemsContainer ref={this.navbarItems}>
-            {this.renderNavigation()}
-          </ItemsContainer>
-        </Navbar>
-      </NavbarContainer>
+      <ThemeProvider theme={this.props.theme}>
+        <NavbarContainer ref={this.navbar} config={this.state.config}>
+          <Navbar>
+            <img src="https://cdn.freebiesupply.com/images/large/2x/philadelphia-eagles-logo-black-and-white.png" />
+            <ItemsContainer ref={this.navbarItems}>
+              {this.renderNavigation()}
+            </ItemsContainer>
+          </Navbar>
+        </NavbarContainer>
+      </ThemeProvider>
     )
   }
 }
