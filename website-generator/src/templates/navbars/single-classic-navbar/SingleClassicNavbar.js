@@ -1,12 +1,14 @@
 import React, { Component } from "react"
 import styled, { keyframes, ThemeProvider } from "styled-components"
 import { Link } from "gatsby"
+import HamburgerMenu from "react-hamburger-menu"
 import {
   NavbarContainer,
   Navbar,
   ItemsContainer,
   Item,
   ItemLink,
+  Hamburger,
 } from "./styled-components"
 
 const config = {
@@ -29,7 +31,11 @@ class SingleClassicNavbar extends Component {
       renderReady: false,
       selectedNavbarItemIndex: 0,
       navbarContainer: NavbarContainer,
+      open: false,
       config: config,
+      mobile: {
+        left: "-50vw",
+      },
     }
   }
 
@@ -92,24 +98,28 @@ class SingleClassicNavbar extends Component {
 
   // Handle toggling the navbar items
   toggleActiveItem = event => {
-    if (this.state.renderReady) {
-      // Convert HTML collection into an array of children
+    // Convert HTML collection into an array of children
+    let navbarItems = [].slice.call(this.navbarItems.current.children)
+    let clickedNavbarItem = event.currentTarget
+    let clickedIndex = navbarItems.indexOf(clickedNavbarItem)
 
-      let navbarItems = [].slice.call(this.navbarItems.current.children)
-      let clickedNavbarItem = event.currentTarget
-      let clickedIndex = navbarItems.indexOf(clickedNavbarItem)
+    // Close the hamburger menu on mobile
+    this.setState({
+      open: false,
+      mobile: { left: "-50vw" },
+    })
+    this.forceUpdate()
 
-      // Handle scrolling to specific section
-      let scrollDistance =
-        clickedIndex == 0 ? 0 : this.sectionScrollSpan[clickedIndex - 1] * 0.85
-      if (clickedIndex == this.sectionScrollSpan.length - 1) {
-        scrollDistance = document.body.scrollHeight
-      }
-      window.scrollTo({
-        top: scrollDistance,
-        behavior: "smooth",
-      })
+    // Handle scrolling to specific section
+    let scrollDistance =
+      clickedIndex == 0 ? 0 : this.sectionScrollSpan[clickedIndex - 1] * 0.85
+    if (clickedIndex == this.sectionScrollSpan.length - 1) {
+      scrollDistance = document.body.scrollHeight
     }
+    window.scrollTo({
+      top: scrollDistance,
+      behavior: "smooth",
+    })
   }
 
   // Render all the sections for the navbar
@@ -138,13 +148,33 @@ class SingleClassicNavbar extends Component {
     }
   }
 
+  // Handle hamburger menu
+  handleClick = () => {
+    let left = this.state.open ? "-50vw" : 0
+    this.setState({
+      open: !this.state.open,
+      mobile: { left: left },
+    })
+  }
+
   render() {
     return (
       <ThemeProvider theme={this.props.theme}>
         <NavbarContainer ref={this.navbar} config={this.state.config}>
+          <Hamburger>
+            <HamburgerMenu
+              isOpen={this.state.open}
+              menuClicked={this.handleClick}
+              width={18}
+              height={15}
+              strokeWidth={2}
+              color="black"
+              animationDuration={0.5}
+            />
+          </Hamburger>
           <Navbar>
             <img src="https://cdn.freebiesupply.com/images/large/2x/philadelphia-eagles-logo-black-and-white.png" />
-            <ItemsContainer ref={this.navbarItems}>
+            <ItemsContainer ref={this.navbarItems} mobile={this.state.mobile}>
               {this.renderNavigation()}
             </ItemsContainer>
           </Navbar>

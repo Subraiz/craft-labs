@@ -33,16 +33,14 @@ const CardOverlay = styled(CardOverlayTemplate)`
 `
 const Name = styled(NameTemplate)`
   ${TeamCardTemplate}:hover & {
-    font-size: 18px;
     opacity: 1;
     bottom: 45px;
   }
 `
 const Description = styled(DescriptionTemplate)`
   ${TeamCardTemplate}:hover & {
-    font-size: 14px;
     opacity: 1;
-    bottom: 25px;
+    bottom: 20px;
   }
 `
 

@@ -17,6 +17,10 @@ const ItemContainer = styled.div`
   transform: ${props => props.config.scale};
   opacity: ${props => props.config.opacity};
   -webkit-animation-fill-mode: forwards;
+
+  @media (max-width: 414px) {
+    transform: scale(0.9);
+  }
 `
 
 export { ItemContainer }

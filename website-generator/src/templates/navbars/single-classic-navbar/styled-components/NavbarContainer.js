@@ -17,6 +17,18 @@ const NavbarContainer = styled.div`
   img {
     height: 90px;
   }
+
+  @media (max-width: 414px) {
+    background-color: white;
+    position: fixed;
+    height: 30px;
+    padding-top: 20px;
+    img {
+      height: 40px;
+      margin-left: 75vw;
+      margin-top: -12px;
+    }
+  }
 `
 
 export { NavbarContainer }

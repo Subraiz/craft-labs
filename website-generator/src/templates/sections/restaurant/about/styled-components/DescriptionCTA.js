@@ -19,6 +19,18 @@ const DescriptionCTA = styled.div`
     margin-right: 5px;
   }
 
+  @media (max-width: 414px) {
+    :first-of-type::first-letter {
+      float: left;
+      font-weight: 400;
+      font-size: 3rem;
+      line-height: 2.5rem;
+      height: 2rem;
+      text-transform: uppercase;
+      margin: 0;
+    }
+  }
+
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;

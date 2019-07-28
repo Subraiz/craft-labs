@@ -8,6 +8,10 @@ const FooterTemplate = props => {
     align-items: center;
     justify-content: space-between;
     background-color: ${props.theme.bgColor};
+
+    @media (max-width: 414px) {
+      flex-flow: column-reverse;
+    }
   `
 
   const CompanyName = styled.p`

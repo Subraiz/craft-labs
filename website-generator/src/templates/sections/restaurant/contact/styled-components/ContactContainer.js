@@ -10,6 +10,11 @@ const ContactContainer = styled.div`
   flex-flow: column;
   align-items: center;
   padding-bottom: 8vh;
+
+  @media (max-width: 414px) {
+    background-size: scale;
+    background-position: center;
+  }
 `
 
 export { ContactContainer }

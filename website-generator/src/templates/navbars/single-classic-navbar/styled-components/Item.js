@@ -37,6 +37,10 @@ const Item = styled.p`
     height: 1px;
     background-color: ${props => props.theme.secondaryColor};
   }
+
+  @media (max-width: 414px) {
+    color: black;
+  }
 `
 
 export { Item }

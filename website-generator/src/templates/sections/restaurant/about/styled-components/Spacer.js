@@ -14,12 +14,18 @@ const Spacer = styled.div`
   background-size: cover;
   background-image: url("https://www.camisa.co.uk/image/data/new-images/tn_background-1920x1080.jpg");
 
+  @media (max-width: 414px) {
+    background-size: scale;
+    background-position: center;
+  }
+
   p {
     color: white;
     z-index: 2;
     font-family: "Ubuntu", sans-serif;
     font-weight: 500;
     font-size: 40px;
+    text-align: center;
   }
 `
 

@@ -10,6 +10,11 @@ const Category = styled.div`
     ${props => props.theme.mainFontFamily[1]};
   cursor: pointer;
   color: ${props => props.theme.secondaryParagraphColor};
+
+  @media (max-width: 414px) {
+    margin: 5px 5px;
+    padding: 5px 18px;
+  }
 `
 
 Category.defaultProps = {

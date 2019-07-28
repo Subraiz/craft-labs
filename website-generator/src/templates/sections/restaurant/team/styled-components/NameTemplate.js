@@ -15,6 +15,11 @@ const NameTemplate = styled.p`
   opacity: 0;
   transition: 0.2s;
   transition-delay: 0.15s;
+  font-size: 18px;
+
+  @media (max-width: 414px) {
+    font-size: 12px;
+  }
 `
 
 NameTemplate.defaultProps = {

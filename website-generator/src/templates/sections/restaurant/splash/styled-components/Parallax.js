@@ -8,6 +8,11 @@ const Parallax = styled.div`
   background-attachment: fixed;
   background-size: cover;
   background-image: url("https://www.palubickis.com/wp-content/uploads/iStock_000028761886turkey-and-cheese-sandwich-SM.jpg");
+
+  @media (max-width: 414px) {
+    background-size: scale;
+    background-position: center;
+  }
 `
 
 export { Parallax }

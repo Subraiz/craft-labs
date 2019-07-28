@@ -9,6 +9,10 @@ const Logo = styled.div`
   background-position: center;
   margin-top: 8vh;
   z-index: 2;
+
+  @media (max-width: 414px) {
+    width: 75%;
+  }
 `
 
 export { Logo }
