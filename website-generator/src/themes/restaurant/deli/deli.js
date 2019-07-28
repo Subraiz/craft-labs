@@ -61,7 +61,12 @@ class Theme extends Component {
   }
 
   renderFooter = () => {
-    return <Footer companyName={this.website.companyInformation.title.value} />
+    return (
+      <Footer
+        companyName={this.website.companyInformation.title.value}
+        theme={this.theme}
+      />
+    )
   }
 
   render() {

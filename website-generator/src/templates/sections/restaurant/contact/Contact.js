@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import styled from "styled-components"
+import styled, { ThemeProvider } from "styled-components"
 import {
   ContactContainer,
   Overlay,
@@ -9,6 +9,7 @@ import {
   Email,
   SocialMedia,
   Icon,
+  ContactSection,
 } from "./styled-components"
 import { faFacebook, faInstagram } from "@fortawesome/free-brands-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
@@ -50,20 +51,22 @@ class Contact extends Component {
 
   render() {
     return (
-      <div>
-        <ContactContainer>
-          <Overlay />
-          <Logo />
-          <Address>{this.address}</Address>
-          <Email>
-            <a href={`mailto:${this.email}`}>{this.email}</a>
-          </Email>
-          <Phone>
-            <a href={`tel:${this.phone}`}>{this.phone}</a>
-          </Phone>
-          <SocialMedia>{this.renderSocialMedia()}</SocialMedia>
-        </ContactContainer>
-      </div>
+      <ThemeProvider theme={this.props.theme}>
+        <ContactSection>
+          <ContactContainer>
+            <Overlay />
+            <Logo />
+            <Address>{this.address}</Address>
+            <Email>
+              <a href={`mailto:${this.email}`}>{this.email}</a>
+            </Email>
+            <Phone>
+              <a href={`tel:${this.phone}`}>{this.phone}</a>
+            </Phone>
+            <SocialMedia>{this.renderSocialMedia()}</SocialMedia>
+          </ContactContainer>
+        </ContactSection>
+      </ThemeProvider>
     )
   }
 }

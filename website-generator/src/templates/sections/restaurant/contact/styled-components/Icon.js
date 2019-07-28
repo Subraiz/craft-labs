@@ -2,12 +2,19 @@ import styled from "styled-components"
 
 const Icon = styled.div`
   margin: 0 8px;
-  color: white;
+  color: ${props => props.theme.primaryColor};
   transition: 0.2s linear;
 
   :hover {
-    color: #ca3d26;
+    color: ${props => props.theme.secondaryColor};
   }
 `
+
+Icon.defaultProps = {
+  theme: {
+    primaryColor: "white",
+    secondaryColor: "#ca3d26",
+  },
+}
 
 export { Icon }

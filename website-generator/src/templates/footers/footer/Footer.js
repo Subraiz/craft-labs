@@ -1,18 +1,18 @@
 import React from "react"
-import styled from "styled-components"
+import styled, { withTheme } from "styled-components"
 
-const FooterContainer = styled.div`
-  display: flex;
-  padding: 0.5rem 2vw;
-  align-items: center;
-  justify-content: space-between;
-`
+const FooterTemplate = props => {
+  const FooterContainer = styled.div`
+    display: flex;
+    padding: 0.5rem 2vw;
+    align-items: center;
+    justify-content: space-between;
+    background-color: ${props.theme.bgColor};
+  `
 
-const CompanyName = styled.p`
-  font-family: "Ubuntu", sans-serif;
-`
-
-const Footer = props => {
+  const CompanyName = styled.p`
+    font-family: "Ubuntu", sans-serif;
+  `
   return (
     <FooterContainer>
       <a
@@ -26,5 +26,7 @@ const Footer = props => {
     </FooterContainer>
   )
 }
+
+const Footer = withTheme(FooterTemplate)
 
 export { Footer }
