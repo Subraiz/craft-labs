@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import styled, { ThemeProvider, withTheme } from "styled-components"
+import styled, { ThemeProvider, withTheme, keyframes } from "styled-components"
 import {
   MenuContainer,
   MenuItemsContainer,
@@ -26,6 +26,11 @@ const Ingredients = styled(IngredientsContainer)`
   }
 `
 
+const config = {
+  scale: "scale(1)",
+  opacity: 1,
+}
+
 class MenuTemplate extends Component {
   constructor(props) {
     super(props)
@@ -35,11 +40,23 @@ class MenuTemplate extends Component {
     this.state = {
       category: this.categories.data[0],
       menu: this.menu,
+      config: config,
     }
   }
 
   onCategoryClick = event => {
-    this.setState({ category: event.target.innerHTML })
+    const category = event.target.innerHTML
+    const removeConfig = {
+      scale: "scale(.2)",
+      opacity: 0,
+    }
+    this.setState({ config: removeConfig })
+    setTimeout(() => {
+      this.setState({ category: category, config: removeConfig })
+    }, 200)
+    setTimeout(() => {
+      this.setState({ config: config })
+    }, 450)
   }
 
   renderCategories = () => {
@@ -77,7 +94,7 @@ class MenuTemplate extends Component {
         this.state.category == "All"
       ) {
         return (
-          <ItemContainer key={index}>
+          <ItemContainer key={index} config={this.state.config}>
             <ImageConstraint>
               <Ingredients />
               <ImageContainer>
