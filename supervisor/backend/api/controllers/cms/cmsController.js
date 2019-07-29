@@ -141,6 +141,8 @@ module.exports.publishWebsite = (req, res, websiteID) => {
               website.save();
             })
             .catch(err => {
+              set("isPublished", true, website);
+              website.save();
               throw err;
             });
         }
