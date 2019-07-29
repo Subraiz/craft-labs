@@ -131,7 +131,7 @@ let WebsiteSchema = mongoose.Schema({
   },
   status: {
     type: String,
-    default: "Live"
+    default: "Unpublished"
   },
   isPublished: {
     type: Boolean,

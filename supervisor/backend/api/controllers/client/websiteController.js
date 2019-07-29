@@ -33,7 +33,6 @@ module.exports.createWebsite = (req, res, websiteInformation) => {
   website.navbar = websiteInformation.navbar;
   website.visitors = [{ ip: "127.0.0.1" }];
   website.companyInformation = websiteInformation.companyInformation;
-  website.status = websiteInformation.status;
   website.theme = websiteInformation.theme;
 
   // Save the website and check for errors

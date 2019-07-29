@@ -79,6 +79,7 @@ module.exports.updateWebsiteProperty = (req, res, websiteID) => {
   });
 };
 
+// Publish the website to update any changes in database
 module.exports.publishWebsite = (req, res, websiteID) => {
   Website.findById(websiteID, function(err, website) {
     // Set website status to building to update front end UI
@@ -97,7 +98,7 @@ module.exports.publishWebsite = (req, res, websiteID) => {
       } ${websiteMinifiedTitle}`,
       {
         async: true,
-        silent: true
+        silent: false
       },
       () => {
         // Once website is built set the status back to live
@@ -105,7 +106,6 @@ module.exports.publishWebsite = (req, res, websiteID) => {
 
         // This part should only be done on testing or production server not locally
         if (process.env.ENV != "Development" && !website.isPublished) {
-          console.log("Publishing website for the first time");
           // Configure .conf file for apache
           shell.exec(
             `cd /var/www && sudo ./server-configure -u ${websiteMinifiedTitle} -d builds/${websiteMinifiedTitle}`,
@@ -152,21 +152,7 @@ module.exports.publishWebsite = (req, res, websiteID) => {
   return res.status(200).send();
 };
 
-// Set specific property on object
-function set(path, value, obj) {
-  var schema = obj; // a moving reference to internal objects within obj
-  var pList = path.split(".");
-  var len = pList.length;
-  for (var i = 0; i < len - 1; i++) {
-    var elem = pList[i];
-    if (!schema[elem]) schema[elem] = {};
-    schema = schema[elem];
-  }
-
-  schema[pList[len - 1]] = value;
-}
-
-/********* Helper Functions for Publishing Website *********/
+/************ Helper Functions for Publishing Website ************/
 function minifyTitle(str) {
   return str
     .replace(/\s+/g, "")
@@ -178,4 +164,17 @@ function minifyTitle(str) {
 function setWebsiteStatus(website, status) {
   set("status", status, website);
   website.save();
+}
+
+function set(path, value, obj) {
+  var schema = obj; // a moving reference to internal objects within obj
+  var pList = path.split(".");
+  var len = pList.length;
+  for (var i = 0; i < len - 1; i++) {
+    var elem = pList[i];
+    if (!schema[elem]) schema[elem] = {};
+    schema = schema[elem];
+  }
+
+  schema[pList[len - 1]] = value;
 }
