@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import smoothscroll from "smoothscroll-polyfill"
-import { light } from "./themes"
+import { light, dark } from "./themes"
 import styles from "./styles.module.scss"
 import { SingleClassicNavbar } from "../../../templates/navbars"
 import { Footer } from "../../../templates/footers"
@@ -12,6 +12,7 @@ const Navbars = {
 
 const Themes = {
   light: light,
+  dark: dark,
 }
 
 // Deli - Dark Theme -- Single Page Website -- Two pages for testing purposes

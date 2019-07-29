@@ -7,7 +7,7 @@ const FooterTemplate = props => {
     padding: 0.5rem 2vw;
     align-items: center;
     justify-content: space-between;
-    background-color: ${props.theme.bgColor};
+    background-color: ${props.theme.footerColor};
 
     @media (max-width: 414px) {
       flex-flow: column-reverse;
@@ -16,6 +16,7 @@ const FooterTemplate = props => {
 
   const CompanyName = styled.p`
     font-family: "Ubuntu", sans-serif;
+    color: ${props.theme.footerText};
   `
   return (
     <FooterContainer>

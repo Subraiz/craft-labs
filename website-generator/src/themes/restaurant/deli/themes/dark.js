@@ -1,23 +1,23 @@
-const light = {
+const dark = {
   primaryColor: "white",
-  secondaryColor: "#ca3d26",
-  tertiaryColor: "#ffd644",
-  bgColor: "white",
-  secondaryBGColor: "#f7f7f7",
-  paragraphColor: "black",
-  secondaryParagraphColor: "rgba(0,0,0,.5)",
+  secondaryColor: "#ca3e47",
+  tertiaryColor: "#212121",
+  bgColor: "#303030",
+  secondaryBGColor: "#424242",
+  paragraphColor: "whitesmoke",
+  secondaryParagraphColor: "#ca3e47",
   buttonColor: "white",
-  navbarColor: "white",
-  navlinkColor: "black",
+  navbarColor: "#212121",
+  navlinkColor: "white",
   linkColor: "#ca3d26",
   mainFontFamily: ["Ubuntu", "sans-serif"],
   secondaryFontFamily: ["Kaushan Script", "cursive"],
   footerColor: "white",
   footerText: "black",
-  overlayColor: "slategrey",
+  overlayColor: "black",
   transparentOverlayColor: "rgba(0,0,0,.4)",
   overlayTextColor: "white",
   shadowColor: "rgba(0,0,0,.1)",
 }
 
-export { light }
+export { dark }
