@@ -11,3 +11,7 @@ module.exports.getHostName = function(str, options) {
     .replace(/\s{2,}/g, " ")
     .toLowerCase();
 };
+
+module.exports.partialSection = function(type) {
+  return "sections/" + type;
+};

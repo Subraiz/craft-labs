@@ -1,3 +1,8 @@
-{{#each page}}
+{{> header}}
 
+
+{{#each pages}}
+  {{#each sections}}
+    {{> (partialSection type) section=this}}
+  {{/each}}
 {{/each}}

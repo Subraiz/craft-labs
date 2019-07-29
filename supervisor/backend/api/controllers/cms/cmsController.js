@@ -13,14 +13,6 @@ module.exports.renderWebsiteManger = (req, res) => {
         message: "Error: Server Error"
       });
     } else {
-      // If user has more than one site redirect to select website page
-      // if (websites.length > 1) {
-      //   return res.render("websiteManager", { layout: false, websites });
-      // } else {
-      //   // Otherwise go to CMS dashboard for website
-      //   res.redirect(`/cms/${websites[0]._id}`);
-      // }
-      axios;
       User.findById(websites[0].userID, function(err, user) {
         if (err) {
           return res.status(500).send({ error: "Server Error" });
@@ -49,11 +41,14 @@ module.exports.renderPage = (req, res, page) => {
           let websiteConfiguration = Object.assign({}, website)._doc;
           // Set the current page as true so handlebars can give it proper styling
           websiteConfiguration.page = page;
+
+          // Pass in user email and website ID for handlebars usage
           websiteConfiguration = {
             ...websiteConfiguration,
             websiteID: req.params.website_id,
             email: user.email
           };
+
           return res.render(page, {
             ...websiteConfiguration,
             layout: "base"
@@ -85,47 +80,33 @@ module.exports.updateWebsiteProperty = (req, res, websiteID) => {
 };
 
 module.exports.publishWebsite = (req, res, websiteID) => {
-  // Set website status to building to update front end UI
   Website.findById(websiteID, function(err, website) {
-    website.status = "Building";
-    set("status", "Building", website);
-    website.save();
+    // Set website status to building to update front end UI
+    setWebsiteStatus(website, "Building");
 
-    let websiteMinifiedTitle = website.title
-      .replace(/\s+/g, "")
-      .replace(/[^A-Za-z0-9\s]/g, "")
-      .replace(/\s{2,}/g, " ")
-      .toLowerCase();
+    // Clean up website title to remove all spaces and dashes
+    let websiteMinifiedTitle = minifyTitle(website.title);
 
-    // Execute bash script located in the site generator to build or develop the Site
-    // Use ./develop for Development and ./build for building
-    let buildScript =
-      process.env.ENV == "Development"
-        ? `./build-local-script`
-        : `./build-script`;
-    let buildScriptPath =
-      process.env.ENV == "Development"
-        ? `/Users/subraizahmed/documents/github/CraftLabs/website-generator`
-        : `/var/www/CraftLabs/website-generator`;
-    shell.cd(`${buildScriptPath}`);
+    // Go to where the build script is located
+    shell.cd(process.env.BUILD_SCRIPT_DIRECTORY);
+
+    // Run gatsby build command to generate static files
     shell.exec(
-      `${buildScript} ${req.params.website_id} ${
-        process.env.BUILD_PATH
+      `${process.env.BUILD_SCRIPT} ${req.params.website_id} ${
+        process.env.OUTPUT_DIRECTORY
       } ${websiteMinifiedTitle}`,
       {
         async: true,
-        silent: false
+        silent: true
       },
       () => {
         // Once website is built set the status back to live
-        Website.findById(websiteID, function(err, website) {
-          set("status", "Live", website);
-          website.save();
-        });
+        setWebsiteStatus(website, "Live");
 
         // This part should only be done on testing or production server not locally
-        // Configure the .conf file for apache
-        if (process.env.ENV != "Development") {
+        if (process.env.ENV != "Development" && !website.isPublished) {
+          console.log("Publishing website for the first time");
+          // Configure .conf file for apache
           shell.exec(
             `cd /var/www && sudo ./server-configure -u ${websiteMinifiedTitle} -d builds/${websiteMinifiedTitle}`,
             {
@@ -133,6 +114,8 @@ module.exports.publishWebsite = (req, res, websiteID) => {
               silent: false
             }
           );
+
+          // Register CNAME on GoDaddy for free domain (website.craftlabs.com)
           axios
             .patch(
               `https://api.godaddy.com/v1/domains/splurgedev.com/records`,
@@ -154,10 +137,11 @@ module.exports.publishWebsite = (req, res, websiteID) => {
               }
             )
             .then(res => {
-              console.log(res.data);
+              set("isPublished", true, website);
+              website.save();
             })
             .catch(err => {
-              console.log(err.response);
+              throw err;
             });
         }
       }
@@ -166,6 +150,7 @@ module.exports.publishWebsite = (req, res, websiteID) => {
   return res.status(200).send();
 };
 
+// Set specific property on object
 function set(path, value, obj) {
   var schema = obj; // a moving reference to internal objects within obj
   var pList = path.split(".");
@@ -177,4 +162,18 @@ function set(path, value, obj) {
   }
 
   schema[pList[len - 1]] = value;
+}
+
+/********* Helper Functions for Publishing Website *********/
+function minifyTitle(str) {
+  return str
+    .replace(/\s+/g, "")
+    .replace(/[^A-Za-z0-9\s]/g, "")
+    .replace(/\s{2,}/g, " ")
+    .toLowerCase();
+}
+
+function setWebsiteStatus(website, status) {
+  set("status", status, website);
+  website.save();
 }

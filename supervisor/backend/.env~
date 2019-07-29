@@ -1,0 +1,10 @@
+JWT_KEY = ziarbus
+DB = cms-dev
+HOST = 34.236.22.80
+PORT = 3000
+ENV = Development
+OUTPUT_DIRECTORY = /Users/subraizahmed/documents/github/exports
+GO_DADDY_API_KEY=e4N7aJLZquSP_SVirLwnWHgMQDxsnijM1Z
+GO_DADDY_SECRET=7mHPvWs8p7czQ1jwAr7sit
+IP = 34.236.22.80
+

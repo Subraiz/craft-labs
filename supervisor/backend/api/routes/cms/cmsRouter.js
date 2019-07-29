@@ -55,6 +55,7 @@ cmsRouter.patch("/:website_id", checkAuth, (req, res) => {
   cmsController.updateWebsiteProperty(req, res, req.params.website_id);
 });
 
+// Handle updating or publishing website for first time
 cmsRouter.post("/publish/:website_id", (req, res) => {
   cmsController.publishWebsite(req, res, req.params.website_id);
 });

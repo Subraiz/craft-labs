@@ -7,7 +7,7 @@
   <div class="header-status-container" >
     <p class="status-indicator">•</p>
     <p class="status-title">Status: </p>
-    <p class="status">Live</p>
+    <p class="status">{{status}}</p>
   </div>
 </div>
 
@@ -16,8 +16,10 @@
 <script type="text/javascript">
   let publishButton = document.querySelector(".publish-button");
   let loader = document.querySelector(".publish-website-loading-container");
+  let websiteStatus = document.querySelector(".status");
   let websiteID = publishButton.getAttribute('data-id');
   publishButton.addEventListener("click", () => {
+
 
     loader.style.display = "block";
     setTimeout(() => {
@@ -31,10 +33,13 @@
   setInterval(() => {
     axios.get(`/website/status/${websiteID}`).then(res => {
       if(res.data.toLowerCase() === "live"){
+        websiteStatus.innerHTML = "Live"
         loader.style.opacity = 0;
         setTimeout(() => {
           loader.style.display = "none";
         }, 150)
+      } else {
+        websiteStatus.innerHTML = "Building"
       }
     })
   }, 1000)
